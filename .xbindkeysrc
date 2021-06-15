@@ -61,21 +61,9 @@ b:6
 "xdotool keyup Shift+Mod4 + t && /media/Datos/Scripts/traductor &"
 Shift+Mod4 + t
 
-#subir volumen
-"xdotool keyup XF86AudioRaiseVolume && amixer set Master 2%+ &"
-XF86AudioRaiseVolume
-
-#bajar volumen
-"xdotool keyup XF86AudioLowerVolume && amixer set Master 2%- &"
-XF86AudioLowerVolume
-
 #mutear volumen
 "xdotool keyup XF86AudioMute && amixer set Master toggle &"
 XF86AudioMute
-
-#tomar screen area seleccionada
-"xdotool keyup Shift+Mod4 + s && flameshot gui &"
-Shift+Mod4 + s
 
 #whatsapp
 "xdotool keyup Shift+Mod4 + w && firefox web.whatsapp.com &"
@@ -88,7 +76,34 @@ Shift+Mod4 + w
 #bajar brillo
 #"xdotool keyup ctrl + Down && xbacklight -dec 10 &"
 #ctrl + Down
-
+#take a screenshot of a specific area
+"sleep 0.25 && scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
+   Control+Shift+Mod2 + Print
+# take a screenshot of the hole screen
+"sleep 0.25 && scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
+   Control+Mod2 + Print
+# volume up
+"sleep 0.25 && amixer set Master 2%+"  
+   Mod2 + XF86AudioRaiseVolume
+# volume down
+"sleep 0.25 && amixer set Master 2%-"
+   Mod2 + XF86AudioLowerVolume
+# increase brightness
+"sleep 0.25 && xbacklight  -inc 10"
+   Mod2 + XF86MonBrightnessUp
+#decrease brightness
+"sleep 0.25 && xbacklight  -dec 10"
+   Mod2 + XF86MonBrightnessDown
+# open firefox
+"sleep 0.25 && firefox"
+   Shift+Mod4 + f
+# open spotify
+"sleep 0.25 && spotify"
+   Shift+Mod4 + s 
+# shut down the computer (not working)
+"sleep 0.25 && sudo shutdown now"
+   Control+Shift+Mod4 + s
+#
 
 
 ##################################
