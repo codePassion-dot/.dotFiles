@@ -122,6 +122,15 @@ alias dps="docker ps"
 alias dils="docker image ls"
 alias dipn="docker image prune"
 alias dnls="docker network ls"
+alias dcud="docker-compose up -d"
+alias dcu="docker-compose up"
+alias dcudb="docker-compose up -d --build"
+alias dcub="docker-compose up --build"
+alias dcb="docker-compose build"
+alias dcbnc="docker-compose build --no-cache"
+alias dcdn="docker-compose down"
+alias dcdnv="docker-compose down --volumes"
+alias dbpn="docker builder prune"
 alias h="cd ~"
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rdwm="sudo make clean install"
@@ -145,6 +154,14 @@ cpfn()
 ndwmp()
 {
         patch -p1 < "$1"
+}
+lwnn()
+{
+        nmcli device wifi list
+}
+cwn()
+{
+        nmcli connection up "$1"
 }
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
