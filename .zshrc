@@ -145,7 +145,8 @@ alias ndwmwr="xprop | awk '
 alias bst="acpi"
 alias slsc="vim ~/slstatus/config.h"
 alias rsls="sudo make clean install"
-
+alias cc="vim ~/.config/compton.conf"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #functions
 cpfn()
 {
@@ -162,6 +163,14 @@ lwnn()
 cwn()
 {
         nmcli connection up "$1"
+}
+sfip()
+{
+        apt-file search "$1"
+}
+ipy()
+{
+        sudo apt install --yes "$1"
 }
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
