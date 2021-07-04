@@ -93,19 +93,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/.local/bin:$PATH"
-export DWM_PATCHES="$HOME/Documents/dwm_patches"
-export BACKGROUNDS="$HOME/Pictures"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
