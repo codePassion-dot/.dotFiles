@@ -1,4 +1,5 @@
 #! /bin/sh
-feh --bg-scale ~/Pictures/wallpapers/0001.jpg
+compton --config ~/.config/compton.conf &
+feh --bg-scale ~/Pictures/wallpapers/0002.jpg
 xbindkeys
 slstatus
