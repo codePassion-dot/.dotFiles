@@ -103,8 +103,9 @@ Shift+Mod4 + w
 # shut down the computer (not working)
 "sleep 0.25 && sudo shutdown now"
    Control+Shift+Mod4 + s
-#
-
+#open kaspersky password manager
+"sleep 0.25 &&  firefox https://my.kaspersky.com/MyPasswords#/all"
+   Shift+Mod2+Mod4 + p
 
 ##################################
 # End of xbindkeys configuration #
