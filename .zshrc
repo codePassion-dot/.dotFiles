@@ -134,6 +134,7 @@ alias slsc="vim ~/slstatus/config.h"
 alias rsls="sudo make clean install"
 alias cc="vim ~/.config/compton.conf"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias blue="bluetoothctl"
 #functions
 cpfn()
 {

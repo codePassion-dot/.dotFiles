@@ -11,4 +11,4 @@ while True:
     random_wallpaper = randint(0,len(images_folder))
     command_to_change_wallpaper = shell_program_command + ' ' + desktop_wallpapers_path + images_folder[random_wallpaper]
     os.system(command_to_change_wallpaper)
-    time.sleep(60)
+    time.sleep(300)
