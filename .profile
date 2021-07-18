@@ -13,6 +13,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
+export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
+export WHATSAPPWEBLINK=https://web.whatsapp.com/
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
