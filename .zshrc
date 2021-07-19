@@ -135,6 +135,9 @@ alias rsls="sudo make clean install"
 alias cc="vim ~/.config/compton.conf"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias blue="bluetoothctl"
+alias efc="fc-cache -fv"
+alias civpn="sudo openfortivpn -c $HOME/vpnconfig >> outputvpn.log &"
+alias cis="ssh jjjaramilloar@172.23.177.79"
 #functions
 cpfn()
 {
@@ -159,6 +162,14 @@ sfip()
 ipy()
 {
         sudo apt install --yes "$1"
+}
+gpi()
+{
+        pidof "$1"
+}
+kpi()
+{
+        sudo kill -s SIGINT $(gpi "$1")
 }
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
