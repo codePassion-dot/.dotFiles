@@ -138,7 +138,12 @@ alias blue="bluetoothctl"
 alias efc="fc-cache -fv"
 alias civpn="sudo openfortivpn -c $HOME/vpnconfig >> outputvpn.log &"
 alias cis="ssh jjjaramilloar@172.23.177.79"
+alias qtilec="vim ~/.config/qtile/config.py"
 #functions
+ank()
+{
+    sudo apt-key add "$1"
+}
 cpfn()
 {
 	echo -n "$1" | xclip -selection clipboard

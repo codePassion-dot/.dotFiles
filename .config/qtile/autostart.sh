@@ -1,4 +1,4 @@
 #! /bin/bash 
-picom &
-nitrogen --restore &
-urxvtd -q -o -f &
+xbindkeys &
+python3 "$SCRIPTS/change_desktop_wallpaper.py" &
+setxkbmap latam

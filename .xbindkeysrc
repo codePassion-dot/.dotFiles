@@ -106,6 +106,7 @@ Shift+Mod4 + w
 #open kaspersky password manager
 "sleep 0.25 &&  firefox $KASPERSKYPWLINK"
    Shift+Mod2+Mod4 + p
+   
 
 ##################################
 # End of xbindkeys configuration #
