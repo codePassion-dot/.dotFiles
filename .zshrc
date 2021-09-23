@@ -3,18 +3,20 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jacobo/.zplug/repos/robbyrussell/oh-my-zsh"
-
+eval `dircolors /home/jacobo/.dir_colors`
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
-ZSH_COLORIZE_STYLE="gruvbox-dark"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# To choose pygments style (see pygments documentation)
+#ZSH_COLORIZE_STYLE="friendly"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -71,6 +73,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+        zsh-syntax-highlighting
         common-aliases
         debian
         docker-compose
@@ -139,6 +142,7 @@ alias efc="fc-cache -fv"
 alias civpn="sudo openfortivpn -c $HOME/vpnconfig >> outputvpn.log &"
 alias cis="ssh jjjaramilloar@172.23.177.79"
 alias qtilec="vim ~/.config/qtile/config.py"
+alias dli="cd $HOME/Documents/IDEA"
 #functions
 ank()
 {
@@ -177,4 +181,4 @@ kpi()
         sudo kill -s SIGINT $(gpi "$1")
 }
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
