@@ -16,7 +16,7 @@ ZSH_THEME="agnoster"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # To choose pygments style (see pygments documentation)
-#ZSH_COLORIZE_STYLE="friendly"
+ZSH_COLORIZE_STYLE="paraiso-dark"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
