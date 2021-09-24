@@ -37,25 +37,27 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-#make the copy action with the ergo-mouse
 #"xdotool keyup b:8 && xdotool key ctrl+c"
-#b:8
+#make the copy action with the ergo-mouse
+"sleep 0.25 && xdotool key ctrl+c"
+b:8
 
+#"xdotool keyup b:9 && sleep 0.25 && xdotool key ctrl+v"
 #make the paste action with the ergo-mouse
-#"xdotool keyup b:9 && xdotool key ctrl+v"
-#b:9
+"sleep 0.25 && xdotool key ctrl+v"
+b:9
 
 #make the return action with the ergo-mouse
-#"xdotool keyup b:2 && xdotool key Return"
-#b:2
+"xdotool keyup b:2 && xdotool key Return"
+b:2
 
 #move to the right with the ergo-mouse
-#"xdotool keyup b:7 && xdotool key Mod2 + Right &"
-#b:7
+"xdotool keyup b:7 && xdotool key Mod2 + Right"
+b:7
 
 #Move to the left with the ergo-mouse
-#"xdotool keyup b:6 && xdotool key Mod2 + Left &"
-#b:6
+"xdotool keyup b:6 && xdotool key Mod2 + Left"
+b:6
 
 #english-spanish traductor
 #"xdotool keyup Shift+Mod4 + t && /media/Datos/Scripts/traductor &"
@@ -77,10 +79,10 @@ Shift+Mod4 + w
 #"xdotool keyup ctrl + Down && xbacklight -dec 10 &"
 #ctrl + Down
 #take a screenshot of a specific area
-"sleep 0.25 && scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
+"sleep 0.25 && maim -s | xclip -selection clipboard -target image/png "
    Control+Shift+Mod2 + Print
 # take a screenshot of the hole screen
-"sleep 0.25 && scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'"
+"sleep 0.25 && maim | xclip -selection clipboard -target image/png"
    Control+Mod2 + Print
 # volume up
 "sleep 0.25 && amixer set Master 2%+"  
