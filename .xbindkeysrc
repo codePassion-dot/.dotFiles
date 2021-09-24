@@ -97,7 +97,7 @@ Shift+Mod4 + w
 "sleep 0.25 && xbacklight  -dec 10"
    Mod2 + XF86MonBrightnessDown
 # open firefox
-"sleep 0.25 && firefox"
+"sleep 0.25 && firefox -P"
    Shift+Mod4 + f
 # open spotify
 "sleep 0.25 && spotify"
