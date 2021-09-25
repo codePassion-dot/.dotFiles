@@ -79,10 +79,10 @@ Shift+Mod4 + w
 #"xdotool keyup ctrl + Down && xbacklight -dec 10 &"
 #ctrl + Down
 #take a screenshot of a specific area
-"sleep 0.25 && maim -s | xclip -selection clipboard -target image/png "
+"sleep 0.25 && flameshot gui"
    Control+Shift+Mod2 + Print
 # take a screenshot of the hole screen
-"sleep 0.25 && maim | xclip -selection clipboard -target image/png"
+"sleep 0.25 && flameshot screen --clipboard"
    Control+Mod2 + Print
 # volume up
 "sleep 0.25 && amixer set Master 2%+"  
