@@ -68,7 +68,7 @@ b:6
 #XF86AudioMute
 
 #open whatsapp in a new firefox window
-"sleep 0.25 && firefox --new-window $WHATSAPPWEBLINK"
+"sleep 0.25 && firefox -P 'Personal Use' --new-window $WHATSAPPWEBLINK"
 Shift+Mod4 + w
 
 #subir brillo
