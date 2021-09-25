@@ -25,7 +25,6 @@
 # SOFTWARE.
 
 from typing import List  # noqa: F401
-
 from libqtile import hook, bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -76,7 +75,7 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "control"], "c", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -84,8 +83,12 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 
     #Screens Management 
-    Key([mod], "a", lazy.to_screen(0), desc="Move window focus to primary screen"),
-    Key([mod], "s", lazy.to_screen(1), desc="Move window focus to secondary screen"),
+    Key([mod], "q", lazy.to_screen(0), desc="Move window focus to primary screen"),
+    Key([mod], "w", lazy.to_screen(1), desc="Move window focus to secondary screen"),
+    Key([mod, "control"], "q", lazy.window.toscreen(0), lazy.to_screen(0),
+        desc="Move window to specified screen"),
+    Key([mod, "control"], "w", lazy.window.toscreen(1), lazy.to_screen(1),
+        desc="Move window to specified screen"),
 
 ]
 
@@ -102,6 +105,9 @@ workspaces = {"1": "WWW",
 groups = [Group(name = workspace_id, label = workspaces[workspace_id]) 
 for workspace_id in workspaces]
 
+
+
+
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
@@ -109,13 +115,16 @@ for i in groups:
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+        Key([mod, "control"], i.name, lazy.window.togroup(i.name,switch_group=True),
             desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
         #     desc="move focused window to group {}".format(i.name)),
     ])
+
+
+
 
 layouts = [
     layout.Columns(border_focus=['#2257ab'], border_width=4),
