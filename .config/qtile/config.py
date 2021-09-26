@@ -83,11 +83,11 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 
     #Screens Management 
-    Key([mod], "q", lazy.to_screen(0), desc="Move window focus to primary screen"),
-    Key([mod], "w", lazy.to_screen(1), desc="Move window focus to secondary screen"),
-    Key([mod, "control"], "q", lazy.window.toscreen(0), lazy.to_screen(0),
+    Key([mod], "w", lazy.to_screen(0), desc="Move window focus to primary screen"),
+    Key([mod], "e", lazy.to_screen(1), desc="Move window focus to secondary screen"),
+    Key([mod, "control"], "w", lazy.window.toscreen(0), lazy.to_screen(0),
         desc="Move window to specified screen"),
-    Key([mod, "control"], "w", lazy.window.toscreen(1), lazy.to_screen(1),
+    Key([mod, "control"], "e", lazy.window.toscreen(1), lazy.to_screen(1),
         desc="Move window to specified screen"),
 
 ]
@@ -102,11 +102,15 @@ workspaces = {"1": "WWW",
               "7": "MUS", 
               "8": "CONF", 
               "9": "AUX"}
-groups = [Group(name = workspace_id, label = workspaces[workspace_id]) 
-for workspace_id in workspaces]
-
-
-
+#groups = [Group(name = workspace_id, label = workspaces[workspace_id], matches=matches_) 
+        #for workspace_id in workspaces if workspace_id == 4 matches_ = [Match(wm_class=["discord"])] else matches_ = []]
+groups = []
+for workspace_id in workspaces:
+    if workspace_id == "4":
+        windows_in_group = [Match(wm_class=["discord"])]
+    else:
+        windows_in_group = []
+    groups.append(Group(name = workspace_id, label = workspaces[workspace_id], matches = windows_in_group))
 
 for i in groups:
     keys.extend([
