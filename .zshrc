@@ -140,12 +140,14 @@ alias zsh="vim ~/.zshrc" \
       blue="bluetoothctl" \
       efc="fc-cache -fv" \
       civpn="sudo openfortivpn -c $HOME/Documents/openfortivpn/openfortivpn-config >> $HOME/Documents/openfortivpn/outputvpn.log 2>&1 &" \
-      cis="ssh jjjaramilloar@172.23.177.79" \
+      cips="ssh jjjaramilloar@172.23.177.79" \
+      cids="ssh jjjaramilloar@172.23.177.238" \
       qtilec="vim ~/.config/qtile/config.py" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
       dli="cd $HOME/Documents/IDEA" \
-      discord="flatpak run com.discordapp.Discord > /dev/null 2>&1 &"
+      discord="flatpak run com.discordapp.Discord > /dev/null 2>&1 &" \ 
+      dbeaver="flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &"
 #functions
 ank()
 {
