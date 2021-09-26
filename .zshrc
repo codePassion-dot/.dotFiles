@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jacobo/.zplug/repos/robbyrussell/oh-my-zsh"
+export GPG_TTY=$(tty)
 eval `dircolors /home/jacobo/.dir_colors`
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -146,8 +147,8 @@ alias zsh="vim ~/.zshrc" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
       dli="cd $HOME/Documents/IDEA" \
-      discord="flatpak run com.discordapp.Discord > /dev/null 2>&1 &" \ 
-      dbeaver="flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &"
+      discord="{flatpak run com.discordapp.Discord > /dev/null 2>&1 &} && disown" \ 
+      dbeaver="{flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &} && disown"
 #functions
 ank()
 {
