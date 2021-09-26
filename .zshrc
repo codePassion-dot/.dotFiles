@@ -106,43 +106,46 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zsh="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias dps="docker ps"
-alias dils="docker image ls"
-alias dipn="docker image prune"
-alias dnls="docker network ls"
-alias dcud="docker-compose up -d"
-alias dcu="docker-compose up"
-alias dcudb="docker-compose up -d --build"
-alias dcub="docker-compose up --build"
-alias dcb="docker-compose build"
-alias dcbnc="docker-compose build --no-cache"
-alias dcdn="docker-compose down"
-alias dcdnv="docker-compose down --volumes"
-alias dbpn="docker builder prune"
-alias h="cd ~"
-alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias rdwm="sudo make clean install"
-alias dwmc="vim ~/dwm-6.1/config.h"
-alias wk="xbindkeys --key"
-alias wmk="xbindkeys --multikey"
-alias rxbk="xbindkeys --poll-rc"
-alias xbkrc="vim ~/.xbindkeysrc"
-alias gwi="xprop | awk '
-	/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print}
-	/^WM_NAME/{sub(/.* =/, \"title:\"); print}'"
-alias bst="acpi"
-alias slsc="vim ~/slstatus/config.h"
-alias rsls="sudo make clean install"
-alias cc="vim ~/.config/compton.conf"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias blue="bluetoothctl"
-alias efc="fc-cache -fv"
-alias civpn="sudo openfortivpn -c $HOME/vpnconfig >> outputvpn.log &"
-alias cis="ssh jjjaramilloar@172.23.177.79"
-alias qtilec="vim ~/.config/qtile/config.py"
-alias dli="cd $HOME/Documents/IDEA"
+alias zsh="vim ~/.zshrc" \
+      vimrc="vim ~/.vimrc" \
+      dps="docker ps" \
+      dils="docker image ls" \
+      dipn="docker image prune" \
+      dnls="docker network ls" \
+      dcud="docker-compose up -d" \
+      dcu="docker-compose up" \
+      dcudb="docker-compose up -d --build" \
+      dcub="docker-compose up --build" \
+      dcb="docker-compose build" \
+      dcbnc="docker-compose build --no-cache" \
+      dcdn="docker-compose down" \
+      dcdnv="docker-compose down --volumes" \
+      dbpn="docker builder prune" \
+      h="cd ~" \
+      r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"' \
+      rdwm="sudo make clean install" \
+      dwmc="vim ~/dwm-6.1/config.h" \
+      wk="xbindkeys --key" \
+      wmk="xbindkeys --multikey" \
+      rxbk="xbindkeys --poll-rc" \
+      xbkrc="vim ~/.xbindkeysrc" \
+      gwi="xprop | awk '
+      	/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print}
+      	/^WM_NAME/{sub(/.* =/, \"title:\"); print}'" \
+      bst="acpi" \
+      slsc="vim ~/slstatus/config.h" \
+      rsls="sudo make clean install" \
+      cc="vim ~/.config/compton.conf" \
+      config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+      blue="bluetoothctl" \
+      efc="fc-cache -fv" \
+      civpn="sudo openfortivpn -c $HOME/Documents/openfortivpn/openfortivpn-config >> $HOME/Documents/openfortivpn/outputvpn.log 2>&1 &" \
+      cis="ssh jjjaramilloar@172.23.177.79" \
+      qtilec="vim ~/.config/qtile/config.py" \
+      pl="curl parrot.live" \
+      rick="curl -s -L http://bit.ly/10hA8iC | bash" \
+      dli="cd $HOME/Documents/IDEA" \
+      discord="flatpak run com.discordapp.Discord > /dev/null 2>&1 &"
 #functions
 ank()
 {
