@@ -37,7 +37,6 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
-
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
@@ -106,55 +105,13 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias zsh="vim ~/.zshrc" \
-      vimrc="vim ~/.vimrc" \
-      dps="docker ps" \
-      dils="docker image ls" \
-      dipn="docker image prune" \
-      dnls="docker network ls" \
-      dcud="docker-compose up -d" \
-      dcu="docker-compose up" \
-      dcudb="docker-compose up -d --build" \
-      dcub="docker-compose up --build" \
-      dcb="docker-compose build" \
-      dcbnc="docker-compose build --no-cache" \
-      dcdn="docker-compose down" \
-      dcdnv="docker-compose down --volumes" \
-      dbpn="docker builder prune" \
-      h="cd ~" \
-      r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"' \
-      rdwm="sudo make clean install" \
-      dwmc="vim ~/dwm-6.1/config.h" \
-      wk="xbindkeys --key" \
-      wmk="xbindkeys --multikey" \
-      rxbk="xbindkeys --poll-rc" \
-      xbkrc="vim ~/.xbindkeysrc" \
-      gwi="xprop | awk '
-      	/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print}
-      	/^WM_NAME/{sub(/.* =/, \"title:\"); print}'" \
-      bst="acpi" \
-      slsc="vim ~/slstatus/config.h" \
-      rsls="sudo make clean install" \
-      cc="vim ~/.config/compton.conf" \
-      config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
-      blue="bluetoothctl" \
-      efc="fc-cache -fv" \
-      civpn="sudo openfortivpn -c $HOME/Documents/openfortivpn/openfortivpn-config >> $HOME/Documents/openfortivpn/outputvpn.log 2>&1 &" \
-      cips="ssh jjjaramilloar@172.23.177.79" \
-      cids="ssh jjjaramilloar@172.23.177.238" \
-      qtilec="vim ~/.config/qtile/config.py" \
-      qtilecd="cd ~/.config/qtile" \
-      qtilel="cat ~/.local/share/qtile/qtile.log" \
-      pl="curl parrot.live" \
-      rick="curl -s -L http://bit.ly/10hA8iC | bash" \
-      dli="cd $HOME/Documents/IDEA" \
-      discord="{flatpak run com.discordapp.Discord > /dev/null 2>&1 &} && disown" \ 
-      dbeaver="{flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &} && disown"
+# Personal Aliases
+if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
+    . $ZSH_CUSTOM/.zsh_aliases;
+fi
 #functions
 cps()
-{
-    python3 -m py_compile "$1"
+{ python3 -m py_compile "$1"
 }
 ank()
 {
