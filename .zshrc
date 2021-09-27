@@ -144,12 +144,18 @@ alias zsh="vim ~/.zshrc" \
       cips="ssh jjjaramilloar@172.23.177.79" \
       cids="ssh jjjaramilloar@172.23.177.238" \
       qtilec="vim ~/.config/qtile/config.py" \
+      qtilecd="cd ~/.config/qtile" \
+      qtilel="cat ~/.local/share/qtile/qtile.log" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
       dli="cd $HOME/Documents/IDEA" \
       discord="{flatpak run com.discordapp.Discord > /dev/null 2>&1 &} && disown" \ 
       dbeaver="{flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &} && disown"
 #functions
+cps()
+{
+    python3 -m py_compile "$1"
+}
 ank()
 {
     sudo apt-key add "$1"
