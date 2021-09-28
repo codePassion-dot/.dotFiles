@@ -111,7 +111,8 @@ if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
 fi
 #functions
 cps()
-{ python3 -m py_compile "$1"
+{ 
+    python3 -m py_compile "$1"
 }
 ank()
 {
@@ -123,31 +124,31 @@ cpfn()
 }
 ndwmp()
 {
-        patch -p1 < "$1"
+    patch -p1 < "$1"
 }
 lwnn()
 {
-        nmcli device wifi list
+    nmcli device wifi list
 }
 cwn()
 {
-        nmcli connection up "$1"
+    nmcli connection up "$1"
 }
 sfip()
 {
-        apt-file search "$1"
+    apt-file search "$1"
 }
 ipy()
 {
-        sudo apt install --yes "$1"
+    sudo apt install --yes "$1"
 }
 gpi()
 {
-        pidof "$1"
+    pidof "$1"
 }
 kpi()
 {
-        sudo kill -s SIGINT $(gpi "$1")
+    sudo kill -s SIGINT $(gpi "$1")
 }
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
