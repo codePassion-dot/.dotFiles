@@ -15,6 +15,9 @@ export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
 export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
 export WHATSAPPWEBLINK=https://web.whatsapp.com/
+
+#rclone mount points to google drive
+rclone mount --daemon gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
