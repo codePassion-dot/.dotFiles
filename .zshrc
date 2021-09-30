@@ -110,6 +110,10 @@ if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
     . $ZSH_CUSTOM/.zsh_aliases;
 fi
 #functions
+dceb()
+{
+    docker-compose exec "$1" bash
+}
 cps()
 { 
     python3 -m py_compile "$1"
