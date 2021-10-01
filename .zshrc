@@ -75,6 +75,7 @@ ENABLE_CORRECTION="true"
 plugins=(git
         zsh-syntax-highlighting
         common-aliases
+        gh
         debian
         docker-compose
         zsh_reload
@@ -90,6 +91,9 @@ plugins=(git
         jsontools
         vundle
         zsh-interactive-cd
+        command-not-found
+        pipenv
+        vscode
         python)
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +114,10 @@ if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
     . $ZSH_CUSTOM/.zsh_aliases;
 fi
 #functions
+sa()
+{
+    alias | grep "$1"
+}
 dceb()
 {
     docker-compose exec "$1" bash
