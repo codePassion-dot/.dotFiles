@@ -165,5 +165,6 @@ kpi()
 {
     sudo kill -s SIGINT $(gpi "$1")
 }
+colorscript random
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
