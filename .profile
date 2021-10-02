@@ -13,6 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
+export QTWEBENGINE_CHROMIUM_FLAGS=--widevine-path="/usr/lib/chromium/libwidevinecdm.so"
 export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
 export WHATSAPPWEBLINK=https://web.whatsapp.com/
 
