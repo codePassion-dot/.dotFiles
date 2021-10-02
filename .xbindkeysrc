@@ -111,7 +111,9 @@ Shift+Mod4 + w
 #open clipboard history
 "sleep 0.25 && copyq menu"
    Mod4 + v
-
+#open qutebrowser (keyboard-oriented web browser)
+"sleep 0.25 && qutebrowser"
+   Shift+Mod4 + q
 ##################################
 # End of xbindkeys configuration #
 ##################################
