@@ -9,7 +9,7 @@ eval `dircolors /home/jacobo/.dir_colors`
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="random"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -76,16 +76,19 @@ plugins=(git
         zsh-syntax-highlighting
         common-aliases
         gh
+        emoji
         debian
         docker-compose
         zsh_reload
         web-search
         copydir
+        flutter
         copyfile
         extract
         colored-man-pages
         colorize
         copybuffer
+        copydir
         emoji-clock
         fancy-ctrl-z
         jsontools
