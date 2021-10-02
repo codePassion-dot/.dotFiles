@@ -29,7 +29,7 @@ alias vimrc="vim ~/.vimrc" \
       config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
       blue="bluetoothctl" \
       efc="fc-cache -fv" \
-      civpn="sudo openfortivpn -c $HOME/Documents/openfortivpn/openfortivpn-config >> $HOME/Documents/openfortivpn/outputvpn.log 2>&1 &" \
+      civpn="sudo openfortivpn -c $HOME/Documents/openfortivpn/openfortivpn-config > $HOME/Documents/openfortivpn/outputvpn.log 2>&1 &" \
       cips="ssh jjjaramilloar@172.23.177.79" \
       cids="ssh jjjaramilloar@172.23.177.238" \
       qtilec="vim ~/.config/qtile/config.py" \
@@ -37,7 +37,7 @@ alias vimrc="vim ~/.vimrc" \
       qtilel="cat ~/.local/share/qtile/qtile.log" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
-      dli="cd $HOME/Documents/IDEA" \
+      ild="cd $HOME/Documents/IDEA-LOCAL" \
       dbeaver="{flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &} && disown" \
       discord="{flatpak run com.discordapp.Discord > /dev/null 2>&1 &} && disown" \
       spotify="{flatpak run com.spotify.Client > /dev/null 2>&1 &} && disown" \
