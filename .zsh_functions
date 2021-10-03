@@ -47,3 +47,7 @@ kpi()
 {
     sudo kill -s SIGINT $(gpi "$1")
 }
+pdf()
+{
+    mupdf "$1"
+}
