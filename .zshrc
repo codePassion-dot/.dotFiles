@@ -76,8 +76,10 @@ plugins=(git
         zsh-syntax-highlighting
         common-aliases
         gh
+        tmux
         emoji
         debian
+        history
         docker-compose
         zsh_reload
         web-search
@@ -97,6 +99,7 @@ plugins=(git
         command-not-found
         pipenv
         vscode
+        chucknorris
         python)
 
 source $ZSH/oh-my-zsh.sh
@@ -116,55 +119,9 @@ source $ZSH/oh-my-zsh.sh
 if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
     . $ZSH_CUSTOM/.zsh_aliases;
 fi
-#functions
-sa()
-{
-    alias | grep "$1"
-}
-dceb()
-{
-    docker-compose exec "$1" bash
-}
-cps()
-{ 
-    python3 -m py_compile "$1"
-}
-ank()
-{
-    sudo apt-key add "$1"
-}
-cpfn()
-{
-	echo -n "$1" | xclip -selection clipboard
-}
-ndwmp()
-{
-    patch -p1 < "$1"
-}
-lwnn()
-{
-    nmcli device wifi list
-}
-cwn()
-{
-    nmcli connection up "$1"
-}
-sfip()
-{
-    apt-file search "$1"
-}
-ipy()
-{
-    sudo apt install --yes "$1"
-}
-gpi()
-{
-    pidof "$1"
-}
-kpi()
-{
-    sudo kill -s SIGINT $(gpi "$1")
-}
+if [ -f $ZSH_CUSTOM/.zsh_functions ]; then
+    . $ZSH_CUSTOM/.zsh_functions;
+fi
 colorscript random
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
