@@ -1,0 +1,49 @@
+#functions
+sa()
+{
+    alias | grep "$1"
+}
+dceb()
+{
+    docker-compose exec "$1" bash
+}
+cps()
+{ 
+    python3 -m py_compile "$1"
+}
+ank()
+{
+    sudo apt-key add "$1"
+}
+cpfn()
+{
+	echo -n "$1" | xclip -selection clipboard
+}
+ndwmp()
+{
+    patch -p1 < "$1"
+}
+lwnn()
+{
+    nmcli device wifi list
+}
+cwn()
+{
+    nmcli connection up "$1"
+}
+sfip()
+{
+    apt-file search "$1"
+}
+ipy()
+{
+    sudo apt install --yes "$1"
+}
+gpi()
+{
+    pidof "$1"
+}
+kpi()
+{
+    sudo kill -s SIGINT $(gpi "$1")
+}
