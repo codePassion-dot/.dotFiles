@@ -19,6 +19,8 @@ export WHATSAPPWEBLINK=https://web.whatsapp.com/
 
 #rclone mount points to google drive
 rclone mount --daemon gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
+rclone mount --daemon gd:"UNIVERSIDAD NACIONAL" $HOME/Documents/UNIVERSITY-REMOTE
+rclone mount --daemon gdd: $HOME/Documents/PERSONAL-DATA-REMOTE
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
