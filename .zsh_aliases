@@ -47,4 +47,5 @@ alias vimrc="vim ~/.vimrc" \
       isp="speedtest" \
       re="random_emoji" \
       cnc="chuck_cow" \
-      lcm="xrandr --listmonitors"
+      lcm="xrandr --listmonitors" \
+      crt="cool-retro-term"
