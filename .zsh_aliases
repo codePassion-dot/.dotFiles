@@ -48,4 +48,5 @@ alias vimrc="vim ~/.vimrc" \
       re="random_emoji" \
       cnc="chuck_cow" \
       lcm="xrandr --listmonitors" \
-      crt="cool-retro-term"
+      crt="cool-retro-term" \
+      src="omz reload"
