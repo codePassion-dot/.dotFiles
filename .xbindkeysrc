@@ -68,12 +68,12 @@ b:6
 #XF86AudioMute
 
 #open whatsapp in a new firefox window
-#"sleep 0.25 && firefox -P 'Personal Use' --new-window $WHATSAPPWEBLINK"
-#Shift+Mod4 + w
+"sleep 0.25 && firefox -P 'Personal Use' --new-window $WHATSAPPWEBLINK"
+   Shift+Mod4 + w
 
 #open whatsapp in a new qutebrowser window
-"sleep 0.25 && qutebrowser --target window $WHATSAPPWEBLINK"
-   Shift+Mod4 + w
+#"sleep 0.25 && qutebrowser --target window $WHATSAPPWEBLINK"
+#   Shift+Mod4 + w
 
 #subir brillo
 #"xdotool keyup ctrl + Up && xbacklight -inc 10 &"
@@ -110,11 +110,11 @@ b:6
 "sleep 0.25 && sudo shutdown now"
    Control+Shift+Mod4 + s
 #open kaspersky password manager with firefox
-#"sleep 0.25 &&  firefox $KASPERSKYPWLINK"
-#   Shift+Mod2+Mod4 + p
-#open kaspersky password manager with qutebrowser
-"sleep 0.25 &&  qutebrowser $KASPERSKYPWLINK"
+"sleep 0.25 &&  firefox $KASPERSKYPWLINK"
    Shift+Mod2+Mod4 + p
+#open kaspersky password manager with qutebrowser
+#"sleep 0.25 &&  qutebrowser $KASPERSKYPWLINK"
+#   Shift+Mod2+Mod4 + p
 #open clipboard history
 "sleep 0.25 && copyq menu"
    Mod4 + v
