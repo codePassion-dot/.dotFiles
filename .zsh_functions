@@ -59,3 +59,7 @@ gdcip()
 {
     docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(gdcid "$1")
 }
+cnvpn()
+{
+   nordvpn connect "$1"
+}
