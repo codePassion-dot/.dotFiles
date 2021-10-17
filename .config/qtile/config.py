@@ -41,8 +41,6 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -89,6 +87,9 @@ keys = [
         desc="Move window to specified screen"),
     Key([mod, "control"], "e", lazy.window.toscreen(1), lazy.to_screen(1),
         desc="Move window to specified screen"),
+    
+    #keyboard layout
+    Key([mod],"space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 
 ]
 
@@ -167,8 +168,9 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.KeyboardLayout(configured_keyboards=['us','es']),
+                widget.Notify(action=False),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.QuickExit(),
@@ -189,7 +191,6 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
