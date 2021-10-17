@@ -121,6 +121,8 @@ b:6
 #open qutebrowser (keyboard-oriented web browser)
 "sleep 0.25 && qutebrowser"
    Shift+Mod4 + q
+"sleep 0.25 && $SCRIPTS/insomnia.py"
+   Control+Alt+Mod2 + s
 ##################################
 # End of xbindkeys configuration #
 ##################################
