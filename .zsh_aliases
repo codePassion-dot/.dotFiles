@@ -49,4 +49,5 @@ alias vimrc="vim ~/.vimrc" \
       cnc="chuck_cow" \
       lcm="xrandr --listmonitors" \
       crt="cool-retro-term" \
-      src="omz reload"
+      src="omz reload" \
+      lud="cd $HOME/Documents/UNIVERSITY-LOCAL/NOVENA\ MATRICULA"
