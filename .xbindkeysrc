@@ -121,8 +121,11 @@ b:6
 #open qutebrowser (keyboard-oriented web browser)
 "sleep 0.25 && qutebrowser"
    Shift+Mod4 + q
+#toogle pc awake state"
 "sleep 0.25 && $SCRIPTS/insomnia.py"
    Control+Alt+Mod2 + s
+"sleep 0.25 && rofi -show drun"
+   Alt + space
 ##################################
 # End of xbindkeys configuration #
 ##################################
