@@ -50,4 +50,5 @@ alias vimrc="vim ~/.vimrc" \
       lcm="xrandr --listmonitors" \
       crt="cool-retro-term" \
       src="omz reload" \
-      lud="cd $HOME/Documents/UNIVERSITY-LOCAL/NOVENA\ MATRICULA"
+      lud="cd $HOME/Documents/UNIVERSITY-LOCAL/NOVENA\ MATRICULA" \
+      dnvpn="nordvpn disconnect"
