@@ -33,7 +33,7 @@ import os
 import subprocess
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = f"{guess_terminal()} --hide-menubar"
 
 keys = [
     # Switch between windows
