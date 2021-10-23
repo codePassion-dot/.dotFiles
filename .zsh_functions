@@ -7,6 +7,10 @@ dceb()
 {
     docker-compose exec "$1" bash
 }
+da()
+{
+    docker attach "$1"
+}
 cps()
 { 
     python3 -m py_compile "$1"
