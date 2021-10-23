@@ -1,7 +1,8 @@
 #functions
 sa()
 {
-    alias | grep "$1"
+    search_string="$@"
+    alias | grep $search_string 
 }
 dceb()
 {
