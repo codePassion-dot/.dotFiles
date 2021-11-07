@@ -57,6 +57,7 @@ chromium
 chromium-common
 chromium-sandbox
 clipit
+cmatrix
 code
 coinor-libcbc3:amd64
 coinor-libcgl1
@@ -162,6 +163,7 @@ fonts-dejavu
 fonts-dejavu-core
 fonts-dejavu-extra
 fonts-droid-fallback
+fonts-freefont-ttf
 fonts-inconsolata
 fonts-liberation
 fonts-liberation2
@@ -360,6 +362,8 @@ gnome-weather
 gnupg
 gnupg-l10n
 gnupg-utils
+gparted
+gparted-common
 gpg
 gpg-agent
 gpg-wks-client
@@ -403,6 +407,7 @@ hicolor-icon-theme
 hitori
 hoichess
 hostname
+htop
 hunspell-en-us
 hyphen-en-us
 i965-va-driver:amd64
@@ -469,6 +474,7 @@ libapt-pkg-perl
 libapt-pkg6.0:amd64
 libarchive13:amd64
 libargon2-1:amd64
+libaribb24-0:amd64
 libasan6:amd64
 libasound2:amd64
 libasound2-data
@@ -557,6 +563,7 @@ libcaribou0:amd64
 libcbor0:amd64
 libcc1-0:amd64
 libccid
+libcddb2
 libcdio-cdda2:amd64
 libcdio-paranoia2:amd64
 libcdio19:amd64
@@ -633,11 +640,13 @@ libdrm-nouveau2:amd64
 libdrm-radeon1:amd64
 libdrm2:amd64
 libdv4:amd64
+libdvbpsi10:amd64
 libdvdnav4:amd64
 libdvdread8:amd64
 libdw1:amd64
 libe-book-0.1-1:amd64
 libebackend-1.2-10:amd64
+libebml5:amd64
 libebook-1.2-20:amd64
 libebook-contacts-1.2-3:amd64
 libecal-2.0-1:amd64
@@ -885,6 +894,7 @@ libisc-export1105:amd64
 libisl23:amd64
 libisofs6:amd64
 libitm1:amd64
+libixml10:amd64
 libjack-jackd2-0:amd64
 libjansson4:amd64
 libjavascriptcoregtk-4.0-18:amd64
@@ -940,11 +950,14 @@ libltc11:amd64
 libltdl7:amd64
 liblua5.2-0:amd64
 liblua5.3-0:amd64
+libluajit-5.1-2:amd64
+libluajit-5.1-common
 liblwp-mediatypes-perl
 liblwp-protocol-https-perl
 liblz4-1:amd64
 liblzma5:amd64
 liblzo2-2:amd64
+libmad0:amd64
 libmagic-mgc
 libmagic1:amd64
 libmagickcore-6.q16-6:amd64
@@ -953,6 +966,7 @@ libmailtools-perl
 libmalcontent-0-0:amd64
 libmalcontent-ui-0-0:amd64
 libmanette-0.2-0:amd64
+libmatroska7:amd64
 libmaxminddb0:amd64
 libmbedcrypto3:amd64
 libmbedtls12:amd64
@@ -1045,6 +1059,7 @@ libnvidia-ml1:amd64
 libnvidia-ptxjitcompiler1:amd64
 libnvidia-rtcore:amd64
 liboauth0:amd64
+libobs0:amd64
 libodfgen-0.1-1:amd64
 libofa0:amd64
 libogg0:amd64
@@ -1055,6 +1070,7 @@ libopencore-amrwb0:amd64
 libopenexr25:amd64
 libopengl0:amd64
 libopenjp2-7:amd64
+libopenmpt-modplug1:amd64
 libopenmpt0:amd64
 libopenni2-0:amd64
 libopus0:amd64
@@ -1099,6 +1115,7 @@ libpipeline1:amd64
 libpipewire-0.3-0:amd64
 libpipewire-0.3-modules:amd64
 libpixman-1-0:amd64
+libplacebo72:amd64
 libplist3:amd64
 libplymouth5:amd64
 libpng16-16:amd64
@@ -1111,7 +1128,9 @@ libpopt0:amd64
 libpostproc55:amd64
 libprocps8:amd64
 libprotobuf-c1:amd64
+libprotobuf-lite23:amd64
 libprotobuf23:amd64
+libproxy-tools
 libproxy1-plugin-gsettings:amd64
 libproxy1-plugin-networkmanager:amd64
 libproxy1-plugin-webkit:amd64
@@ -1190,6 +1209,7 @@ libreoffice-style-colibre
 libreoffice-style-elementary
 libreoffice-writer
 libreofficekit-data
+libresid-builder0c2a
 librest-0.7-0:amd64
 librevenge-0.0-0:amd64
 librhythmbox-core10:amd64
@@ -1210,6 +1230,8 @@ libsasl2-2:amd64
 libsasl2-modules:amd64
 libsasl2-modules-db:amd64
 libsbc1:amd64
+libsdl-image1.2:amd64
+libsdl1.2debian:amd64
 libsdl2-2.0-0:amd64
 libseccomp2:amd64
 libsecret-1-0:amd64
@@ -1225,6 +1247,7 @@ libsgutils2-2
 libshine3:amd64
 libshout3:amd64
 libsidplay1v5:amd64
+libsidplay2
 libsigc++-2.0-0v5:amd64
 libslang2:amd64
 libslirp0:amd64
@@ -1246,6 +1269,7 @@ libsoup2.4-1:amd64
 libsoxr0:amd64
 libspa-0.2-modules:amd64
 libspandsp2:amd64
+libspatialaudio0:amd64
 libspdlog1:amd64
 libspectre1:amd64
 libspeechd2:amd64
@@ -1325,6 +1349,7 @@ libuno-sal3
 libuno-salhelpergcc3-3
 libunoloader-java
 libunwind8:amd64
+libupnp13:amd64
 libupower-glib3:amd64
 liburi-perl
 libusb-0.1-4:amd64
@@ -1344,6 +1369,10 @@ libvdpau1:amd64
 libvidstab1.1:amd64
 libvisio-0.1-1:amd64
 libvisual-0.4-0:amd64
+libvlc-bin:amd64
+libvlc5:amd64
+libvlccore9:amd64
+libvncclient1:amd64
 libvncserver1:amd64
 libvo-aacenc0:amd64
 libvo-amrwbenc0:amd64
@@ -1534,6 +1563,7 @@ nautilus
 nautilus-data
 nautilus-extension-brasero
 nautilus-extension-gnome-terminal
+ncdu
 ncurses-base
 ncurses-bin
 ncurses-term
@@ -1570,6 +1600,9 @@ nvidia-vdpau-driver:amd64
 nvidia-vulkan-common
 nvidia-vulkan-icd:amd64
 nvidia-xconfig
+nyancat
+obs-plugins
+obs-studio
 ocl-icd-libopencl1:amd64
 openfortivpn
 opensc
@@ -1713,6 +1746,7 @@ rhythmbox
 rhythmbox-data
 rhythmbox-plugin-cdrecorder
 rhythmbox-plugins
+ripgrep
 rofi
 rsyslog
 rtkit
@@ -1769,6 +1803,8 @@ tasksel-data
 telnet
 timgm6mb-soundfont
 tmux
+toilet
+toilet-fonts
 totem
 totem-common
 totem-plugins
@@ -1786,6 +1822,7 @@ udisks2
 unattended-upgrades
 uno-libs-private
 unoconv
+unrar
 unzip
 update-glx
 update-inetd
@@ -1805,6 +1842,19 @@ vim
 vim-common
 vim-runtime
 vim-tiny
+vlc
+vlc-bin
+vlc-data
+vlc-l10n
+vlc-plugin-access-extra:amd64
+vlc-plugin-base:amd64
+vlc-plugin-notify:amd64
+vlc-plugin-qt:amd64
+vlc-plugin-samba:amd64
+vlc-plugin-skins2:amd64
+vlc-plugin-video-output:amd64
+vlc-plugin-video-splitter:amd64
+vlc-plugin-visualization:amd64
 w3m
 w3m-img
 wamerican
@@ -1839,6 +1889,7 @@ xfonts-encodings
 xfonts-scalable
 xfonts-utils
 xinit
+xinput
 xkb-data
 xkbset
 xml-core
