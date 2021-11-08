@@ -77,3 +77,11 @@ omof()
    libreoffice "$1" > /dev/null 2>&1 & \
    disown
 }
+sgdurl()
+{
+   rclone sync -i gd:"UNIVERSIDAD NACIONAL/NOVENA MATRICULA/$1" $2
+}
+sgdulr()
+{
+   rclone sync -i $1 gd:"UNIVERSIDAD NACIONAL/NOVENA MATRICULA/$2"
+}
