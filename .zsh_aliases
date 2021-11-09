@@ -12,6 +12,7 @@ alias vimrc="vim ~/.vimrc" \
       dcdn="docker-compose down" \
       dcdnv="docker-compose down --volumes" \
       dbpn="docker builder prune" \
+      dclsa="docker container ls --all" \
       r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"' \
       rdwm="sudo make clean install" \
       dwmc="vim ~/dwm-6.1/config.h" \
