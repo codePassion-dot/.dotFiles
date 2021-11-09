@@ -93,3 +93,11 @@ sgdpdlr()
 {
    rclone sync -i "$1" gdd:"$2"
 }
+cirb()
+{
+   rclone copy gd:"PROYECTO IDEA/Docker/desarrollo local/bodega-datos/backups/$1.sql" "$2"
+}
+dirm()
+{
+   docker image rm $1
+}
