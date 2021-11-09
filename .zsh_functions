@@ -85,3 +85,11 @@ sgdulr()
 {
    rclone sync -i $1 gd:"UNIVERSIDAD NACIONAL/NOVENA MATRICULA/$2"
 }
+sgdpdrl()
+{
+   rclone sync -i gdd:"$1" "$2"
+}
+sgdpdlr()
+{
+   rclone sync -i "$1" gdd:"$2"
+}
