@@ -129,6 +129,8 @@ eject
 emacsen-common
 enchant-2
 eog
+espeak
+espeak-data:amd64
 espeak-ng-data:amd64
 evince
 evince-common
@@ -213,6 +215,7 @@ gedit-plugin-translate
 gedit-plugin-word-completion
 gedit-plugins
 gedit-plugins-common
+geoclue-2-demo
 geoclue-2.0
 gettext-base
 gh
@@ -449,6 +452,7 @@ krb5-locales
 laptop-detect
 less
 liba52-0.7.4:amd64
+libaa-bin
 libaa1:amd64
 libaacs0:amd64
 libabw-0.1-1:amd64
@@ -669,6 +673,7 @@ libept1.6.0:amd64
 libepubgen-0.1-1:amd64
 liberror-perl
 libespeak-ng1:amd64
+libespeak1:amd64
 libestr0:amd64
 libetonyek-0.1-1:amd64
 libev4:amd64
@@ -1125,6 +1130,7 @@ libpolkit-gobject-1-0:amd64
 libpoppler-glib8:amd64
 libpoppler102:amd64
 libpopt0:amd64
+libportaudio2:amd64
 libpostproc55:amd64
 libprocps8:amd64
 libprotobuf-c1:amd64
@@ -1741,6 +1747,7 @@ ranger
 rclone
 readline-common
 realmd
+redshift
 reportbug
 rhythmbox
 rhythmbox-data
