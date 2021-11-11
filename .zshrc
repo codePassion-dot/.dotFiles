@@ -16,6 +16,10 @@ ZSH_THEME="robbyrussell"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+autoload -U edit-command-line
+# Vi style:
+zle -N edit-command-line
+bindkey -v
 # To choose pygments style (see pygments documentation)
 ZSH_COLORIZE_STYLE="paraiso-dark"
 
