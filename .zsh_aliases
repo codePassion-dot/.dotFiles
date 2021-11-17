@@ -54,4 +54,6 @@ alias vimrc="vim ~/.vimrc" \
       lud="cd $HOME/Documents/UNIVERSITY-LOCAL/NOVENA\ MATRICULA" \
       dnvpn="nordvpn disconnect" \
       raptp="sudo xargs -a packages_list.txt apt install" \
-      cls="clear "
+      cls="clear " \
+      rhe="cd $HOME/Documents/PERSONAL-DATA-REMOTE/DATOS\ CASA\ \(PINAR\)/PAGOS\ 2021/" \
+      tipsc="ping 172.23.177.79"
