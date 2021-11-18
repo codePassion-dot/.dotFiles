@@ -1526,6 +1526,7 @@ linux-image-5.10.0-9-amd64
 linux-image-amd64
 linux-kbuild-5.10
 linux-libc-dev:amd64
+lm-sensors
 locales
 login
 logrotate
