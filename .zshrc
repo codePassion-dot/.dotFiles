@@ -128,3 +128,7 @@ fi
 colorscript random
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fnm
+export PATH=/home/jacobo/.fnm:$PATH
+eval "`fnm env`"
