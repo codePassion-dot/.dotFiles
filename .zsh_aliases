@@ -56,4 +56,5 @@ alias vimrc="vim ~/.vimrc" \
       raptp="sudo xargs -a packages_list.txt apt install" \
       cls="clear " \
       rhe="cd $HOME/Documents/PERSONAL-DATA-REMOTE/DATOS\ CASA\ \(PINAR\)/PAGOS\ 2021/" \
-      tipsc="ping 172.23.177.79"
+      tipsc="ping 172.23.177.79" \
+      code="eval \`ssh-agent\` && ssh-add && code ."
