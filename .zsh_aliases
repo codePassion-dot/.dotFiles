@@ -52,6 +52,7 @@ alias vimrc="vim ~/.vimrc" \
       crt="cool-retro-term" \
       src="omz reload" \
       lud="cd $HOME/Documents/UNIVERSITY-LOCAL/NOVENA\ MATRICULA" \
+      pp="cd $HOME/Documents/PERSONAL-PROJECTS" \
       dnvpn="nordvpn disconnect" \
       raptp="sudo xargs -a packages_list.txt apt install" \
       cls="clear " \
