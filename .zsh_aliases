@@ -58,4 +58,5 @@ alias vimrc="vim ~/.vimrc" \
       cls="clear " \
       rhe="cd $HOME/Documents/PERSONAL-DATA-REMOTE/DATOS\ CASA\ \(PINAR\)/PAGOS\ 2021/" \
       tipsc="ping 172.23.177.79" \
-      code="eval \`ssh-agent\` && ssh-add && code ."
+      code="eval \`ssh-agent\` && ssh-add && code ." \
+      zshrc="vim $HOME/.zshrc"
