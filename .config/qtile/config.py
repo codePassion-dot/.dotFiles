@@ -168,6 +168,8 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                widget.BatteryIcon(),
+                widget.Battery(),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.KeyboardLayout(configured_keyboards=['latam']),
                 widget.Notify(action=False),
