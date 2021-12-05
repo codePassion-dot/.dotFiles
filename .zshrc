@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jacobo/.zplug/repos/robbyrussell/oh-my-zsh"
+export ZSH="/home/jacobo/.oh-my-zsh"
 export GPG_TTY=$(tty)
 eval `dircolors /home/jacobo/.dir_colors`
 # Set name of the theme to load --- if set to "random", it will
@@ -130,5 +130,5 @@ colorscript random
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fnm
-export PATH=/home/jacobo/.fnm:$PATH
+#export PATH=$HOME/.local/bin:/home/jacobo/.fnm:$PATH
 eval "`fnm env`"
