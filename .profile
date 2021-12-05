@@ -9,7 +9,6 @@
 #umask 022
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/.local/bin:$PATH"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
@@ -55,4 +54,9 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+# set PATH so it includes fnm bin if it exists
+if [ -d "$HOME/.fnm" ] ; then
+    PATH="$HOME/.fnm:$PATH"
 fi
