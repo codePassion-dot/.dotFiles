@@ -101,7 +101,7 @@ workspaces = {"1": "WWW",
               "5": "MAIL",
               "6": "VID",
               "7": "MUS", 
-              "8": "CONF", 
+              "8": "PROG", 
               "9": "AUX"}
 #groups = [Group(name = workspace_id, label = workspaces[workspace_id], matches=matches_) 
         #for workspace_id in workspaces if workspace_id == 4 matches_ = [Match(wm_class=["discord"])] else matches_ = []]
