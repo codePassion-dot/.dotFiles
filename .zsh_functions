@@ -32,9 +32,13 @@ lwnn()
 {
     nmcli device wifi list
 }
+cewn()
+{
+    nmcli con up "$1"
+}
 cwn()
 {
-    nmcli connection up "$1"
+    nmcli --ask device wifi connect "$1"
 }
 sfip()
 {
