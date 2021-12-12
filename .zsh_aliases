@@ -3,14 +3,6 @@ alias vimrc="vim ~/.vimrc" \
       dils="docker image ls" \
       dipn="docker image prune" \
       dnls="docker network ls" \
-      dcud="docker-compose up -d" \
-      dcu="docker-compose up" \
-      dcudb="docker-compose up -d --build" \
-      dcub="docker-compose up --build" \
-      dcb="docker-compose build" \
-      dcbnc="docker-compose build --no-cache" \
-      dcdn="docker-compose down" \
-      dcdnv="docker-compose down --volumes" \
       dbpn="docker builder prune" \
       dclsa="docker container ls --all" \
       r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"' \
