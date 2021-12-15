@@ -9,7 +9,7 @@
 #umask 022
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/home/jacobo/.config/rofi/bin:$PATH"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
