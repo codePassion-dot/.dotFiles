@@ -132,7 +132,7 @@ for i in groups:
 
 
 layouts = [
-    layout.Columns(border_focus=['#2257ab'], border_width=4),
+    layout.Columns(border_focus=['#2257ab'], border_width=4,margin=8),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
