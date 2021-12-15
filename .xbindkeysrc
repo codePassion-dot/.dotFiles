@@ -124,7 +124,7 @@ b:6
 #toogle pc awake state"
 "sleep 0.25 && $SCRIPTS/insomnia.py"
    Control+Alt+Mod2 + s
-"sleep 0.25 && rofi -show drun"
+"sleep 0.25 && launcher_ribbon"
    Alt + space
 "sleep 0.25 && pavucontrol"
    Control+Mod4 + p
