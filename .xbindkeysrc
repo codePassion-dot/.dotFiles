@@ -86,7 +86,7 @@ b:6
 "sleep 0.25 && flameshot gui"
    Control+Shift+Mod2 + Print
 # take a screenshot of the hole screen
-"sleep 0.25 && flameshot screen --clipboard"
+"sleep 0.25 && flameshot full --clipboard"
    Control+Mod2 + Print
 # volume up
 "sleep 0.25 && amixer set Master 2%+"  
