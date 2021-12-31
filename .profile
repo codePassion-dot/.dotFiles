@@ -47,6 +47,11 @@ if [ -n "$ZSH_VERSION" ]; then
     fi
 fi
 
+# set PATH so it includes yarn global bin folder if it exists
+if [ -d "$HOME/.yarn/bin" ] ; then
+    PATH="$HOME/.yarn/bin:$PATH"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
