@@ -67,8 +67,8 @@ b:6
 #"xdotool keyup XF86AudioMute && amixer set Master toggle &"
 #XF86AudioMute
 
-#open whatsapp in a new flatpak run org.mozilla.firefox window
-"sleep 0.25 && flatpak run org.mozilla.firefox -P 'Personal' --new-window $WHATSAPPWEBLINK"
+#open whatsapp in a new firefox window
+"sleep 0.25 && firefox -P 'Personal' --new-window $WHATSAPPWEBLINK"
    Shift+Mod4 + w
 
 #open whatsapp in a new qutebrowser window
@@ -100,8 +100,8 @@ b:6
 #decrease brightness
 "sleep 0.25 && light -U 10"
    Mod2 + XF86MonBrightnessDown
-# open flatpak run org.mozilla.firefox
-"sleep 0.25 && flatpak run org.mozilla.firefox -P"
+# open firefox
+"sleep 0.25 && firefox -P"
    Shift+Mod4 + f
 # open spotify
 "sleep 0.25 && spotify"
@@ -109,8 +109,8 @@ b:6
 # shut down the computer (not working)
 "sleep 0.25 && sudo shutdown now"
    Control+Shift+Mod4 + s
-#open kaspersky password manager with flatpak run org.mozilla.firefox
-"sleep 0.25 &&  flatpak run org.mozilla.firefox $KASPERSKYPWLINK"
+#open kaspersky password manager with firefox
+"sleep 0.25 &&  firefox -P 'Personal' $KASPERSKYPWLINK"
    Shift+Mod2+Mod4 + p
 #open kaspersky password manager with qutebrowser
 #"sleep 0.25 &&  qutebrowser $KASPERSKYPWLINK"
