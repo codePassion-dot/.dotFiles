@@ -105,3 +105,12 @@ dirm()
 {
    docker image rm $1
 }
+dcrrm()
+{
+  docker container rm $1
+}
+sih()
+{
+  search_string="$@"
+  h | grep $search_string
+}
