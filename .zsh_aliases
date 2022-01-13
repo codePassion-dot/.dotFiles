@@ -28,6 +28,7 @@ alias vimrc="vim ~/.vimrc" \
       qtilec="vim ~/.config/qtile/config.py" \
       qtilecd="cd ~/.config/qtile" \
       qtilel="cat ~/.local/share/qtile/qtile.log" \
+      qtilerl="rm ~/.local/share/qtile/qtile.log" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
       ild="cd $HOME/Documents/IDEA-LOCAL" \
