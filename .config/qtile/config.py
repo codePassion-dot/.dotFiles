@@ -170,7 +170,6 @@ screens = [
                 ),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.KeyboardLayout(configured_keyboards=['us','es']),
-                widget.Notify(action=False),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.QuickExit(),
