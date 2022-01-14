@@ -68,7 +68,7 @@ b:6
 #XF86AudioMute
 
 #open whatsapp in a new firefox window
-"sleep 0.25 && firefox -P 'Personal Use' --new-window $WHATSAPPWEBLINK"
+"sleep 0.25 && firefox -P 'Personal' --new-window $WHATSAPPWEBLINK"
    Shift+Mod4 + w
 
 #open whatsapp in a new qutebrowser window
@@ -110,7 +110,7 @@ b:6
 "sleep 0.25 && sudo shutdown now"
    Control+Shift+Mod4 + s
 #open kaspersky password manager with firefox
-"sleep 0.25 &&  firefox $KASPERSKYPWLINK"
+"sleep 0.25 &&  firefox -P 'Personal' $KASPERSKYPWLINK"
    Shift+Mod2+Mod4 + p
 #open kaspersky password manager with qutebrowser
 #"sleep 0.25 &&  qutebrowser $KASPERSKYPWLINK"
