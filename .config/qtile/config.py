@@ -109,6 +109,8 @@ groups = []
 for workspace_id in workspaces:
     if workspace_id == "4":
         windows_in_group = [Match(wm_class=["discord"])]
+    elif workspace_id == "7":
+        windows_in_group = [Match(wm_instance_class=["spotify"])]
     else:
         windows_in_group = []
     groups.append(Group(name = workspace_id, label = workspaces[workspace_id], matches = windows_in_group))
