@@ -132,3 +132,8 @@ colorscript random
 # fnm
 export PATH=/home/jacobo/.fnm:$PATH
 eval "`fnm env`"
+
+#nnn
+#export NNN_PLUG=
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_PLUG='p:preview-tui;o:fzopen'
