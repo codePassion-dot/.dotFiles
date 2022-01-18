@@ -59,4 +59,8 @@ alias vimrc="vim ~/.vimrc" \
       cna="config add" \
       cncmsg="config commit -m" \
       cnlg="config log --stat" \
-      cnd="config diff"
+      cnd="config diff" \
+      le="exa --header --long --git --icons --links --all" \
+      bcat="batcat" \
+      duf="duf" \
+      fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
