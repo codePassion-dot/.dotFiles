@@ -19,6 +19,7 @@ export WHATSAPPWEBLINK=https://web.whatsapp.com/
 
 #rclone mount points to google drive
 rclone mount --daemon --dir-cache-time 48h --vfs-cache-mode full gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
+rclone mount --daemon --dir-cache-time 48h --vfs-cache-mode full gd:"DATOS CASA (PINAR)" $HOME/Documents/HOME-DATA-REMOTE
 rclone mount --daemon --dir-cache-time 48h --vfs-cache-mode full gd:"UNIVERSIDAD NACIONAL" $HOME/Documents/UNIVERSITY-REMOTE
 rclone mount --daemon --dir-cache-time 48h --vfs-cache-mode full gdd: $HOME/Documents/PERSONAL-DATA-REMOTE
 # You may need to manually set your language environment
@@ -41,7 +42,7 @@ fi
 
 # if running zsh
 if [ -n "$ZSH_VERSION" ]; then
-    # include .bashrc if it exists
+    # include .bashrc if it exists 
     if [ -f "$HOME/.zshrc" ]; then
 	. "$HOME/.zshrc"
     fi
