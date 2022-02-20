@@ -135,6 +135,8 @@ export PATH=/home/jacobo/.fnm:$PATH
 eval "`fnm env`"
 
 #nnn
-#export NNN_PLUG=
 export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='p:preview-tui;o:fzopen'
+export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log'
+
+#zoxide
+eval "$(zoxide init zsh)"
