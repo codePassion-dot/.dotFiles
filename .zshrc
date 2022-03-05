@@ -135,7 +135,7 @@ eval "`fnm env`"
 
 #nnn
 export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log'
+export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 
 #zoxide
 eval "$(zoxide init zsh)"
