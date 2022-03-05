@@ -1,0 +1,15 @@
+[user]
+  name = Juan Jacobo Jaramillo
+  useConfigOnly = true
+[include]
+    path = ~/.gitconfig.university-work
+[includeIf "gitdir:~/Documents/MELT-STUDIO/"]
+    path = ~/.gitconfig.work
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false

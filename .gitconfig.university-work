@@ -1,0 +1,7 @@
+[user]
+	email = jjjaramilloar@unal.edu.co
+	signingkey = 8EC1A3CC5B3A58E1
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
