@@ -76,3 +76,4 @@ set tabstop=4
 syntax enable
 set encoding=UTF-8
 set relativenumber
+set clipboard=unnamedplus
