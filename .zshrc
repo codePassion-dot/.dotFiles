@@ -87,14 +87,13 @@ plugins=(git
         history
         docker-compose
         web-search
-        copydir
         flutter
         copyfile
         extract
         colored-man-pages
         colorize
         copybuffer
-        copydir
+        copypath
         emoji-clock
         fancy-ctrl-z
         jsontools
