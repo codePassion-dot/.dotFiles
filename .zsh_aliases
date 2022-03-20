@@ -65,4 +65,5 @@ alias vimrc="vim ~/.vimrc" \
       cnp="config push" \
       cna="config add" \
       cncmsg="config commit -m" \
-      cnlg="config log --stat"
+      cnlg="config log --stat" \
+      tic="ping google.com"
