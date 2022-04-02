@@ -129,13 +129,13 @@ colorscript random
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# fnm
-export PATH=/home/jacobo/.fnm:$PATH
-eval "`fnm env`"
-
 #nnn
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 
 #zoxide
 eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
