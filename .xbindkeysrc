@@ -84,10 +84,10 @@ b:6
 #ctrl + Down
 #take a screenshot of a specific area
 "sleep 0.25 && flameshot gui"
-   Control+Shift+Mod2 + Print
+   Control+Shift+Mod2 + semicolon
 # take a screenshot of the hole screen
-"sleep 0.25 && flameshot screen --clipboard"
-   Control+Mod2 + Print
+#"sleep 0.25 && flameshot screen --clipboard"
+#   Control+Mod2 + semicolon
 # volume up
 "sleep 0.25 && amixer set Master 2%+"  
    Mod2 + XF86AudioRaiseVolume
