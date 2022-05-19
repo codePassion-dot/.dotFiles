@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jacobo/.zplug/repos/robbyrussell/oh-my-zsh"
+export ZSH="/home/jacobo/.oh-my-zsh"
 export GPG_TTY=$(tty)
 eval `dircolors /home/jacobo/.dir_colors`
 # Set name of the theme to load --- if set to "random", it will
@@ -139,3 +139,19 @@ eval "$(zoxide init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#zplug
+source ~/.zplug/init.zsh
+
+zplug 'wfxr/forgit'
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
