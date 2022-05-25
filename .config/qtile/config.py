@@ -111,6 +111,8 @@ for workspace_id in workspaces:
         windows_in_group = [Match(wm_class=["discord"])]
     elif workspace_id == "7":
         windows_in_group = [Match(wm_instance_class=["spotify"])]
+    elif workspace_id == "8":
+        windows_in_group = [Match(title="Android Emulator - Pixel_XL_API_30:5554")]
     else:
         windows_in_group = []
     groups.append(Group(name = workspace_id, label = workspaces[workspace_id], matches = windows_in_group))
@@ -225,6 +227,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
+    Match(title='Android Emulator - Pixel_XL_API_30:5554'),
 ])
 auto_fullscreen = True
 

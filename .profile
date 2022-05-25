@@ -16,6 +16,10 @@ export SCRIPTS="$HOME/Documents/scripts"
 export QTWEBENGINE_CHROMIUM_FLAGS=--widevine-path="/usr/lib/chromium/libwidevinecdm.so"
 export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
 export WHATSAPPWEBLINK=https://web.whatsapp.com/
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export JAVA_HOME=$HOME/.local/bin/android-studio/jre
 
 #rclone mount points to google drive
 rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
