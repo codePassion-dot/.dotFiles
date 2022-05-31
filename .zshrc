@@ -144,6 +144,7 @@ export NVM_DIR="$HOME/.nvm"
 source ~/.zplug/init.zsh
 
 zplug 'wfxr/forgit'
+zplug "arzzen/calc.plugin.zsh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
