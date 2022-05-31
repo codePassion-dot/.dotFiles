@@ -64,4 +64,5 @@ alias vimrc="vim ~/.vimrc" \
       le="exa --header --long --git --icons --links --all" \
       bcat="batcat" \
       duf="duf" \
-      fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
+      fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'" \
+      gspf="ncdu --exclude './Documents/*-REMOTE'"
