@@ -112,7 +112,7 @@ for workspace_id in workspaces:
     elif workspace_id == "7":
         windows_in_group = [Match(wm_instance_class=["spotify"])]
     elif workspace_id == "8":
-        windows_in_group = [Match(title="Android Emulator - Pixel_XL_API_30:5554")]
+        windows_in_group = [Match(title="Android Emulator - Pixel_XL_API_30:5554"),Match(title="SM-N770F")]
     else:
         windows_in_group = []
     groups.append(Group(name = workspace_id, label = workspaces[workspace_id], matches = windows_in_group))
@@ -228,6 +228,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(title='Android Emulator - Pixel_XL_API_30:5554'),
+    Match(title='SM-N770F'),
+    Match(wm_class='jetbrains-studio',title='win0'),
 ])
 auto_fullscreen = True
 
