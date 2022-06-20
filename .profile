@@ -20,6 +20,12 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export JAVA_HOME=$HOME/.local/bin/android-studio/jre
+export FLYCTL_INSTALL="/home/jacobo/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export DENO_INSTALL="/home/jacobo/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export GO_INSTALL="/home/jacobo/go"
+export PATH="$GO_INSTALL/bin:$PATH"
 
 #rclone mount points to google drive
 rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
@@ -67,3 +73,4 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+. "$HOME/.cargo/env"
