@@ -54,6 +54,7 @@ alias vimrc="vim ~/.vimrc" \
       codei="eval \`ssh-agent\` && ssh-add && code ." \
       codem="eval \`ssh-agent\` && ssh-add ~/.ssh/id_ed25519-melt && code ." \
       zshrc="vim $HOME/.zshrc" \
+      nvimcd="cd $HOME/.config/nvim" \
       cnst="config status" \
       cnl="config pull" \
       cnp="config push" \
