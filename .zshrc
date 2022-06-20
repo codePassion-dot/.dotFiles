@@ -78,7 +78,6 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
         zsh-syntax-highlighting
-        zsh-autosuggestions
         common-aliases
         gh
         tmux
@@ -103,7 +102,8 @@ plugins=(git
         pipenv
         vscode
         chucknorris
-        python)
+        python
+        fzf-zsh-plugin)
 
 source $ZSH/oh-my-zsh.sh
 
