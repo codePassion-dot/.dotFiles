@@ -156,3 +156,6 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+#direnv staff (manage gh config dir environment variable)
+eval "$(direnv hook zsh)"
