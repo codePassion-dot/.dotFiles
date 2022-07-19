@@ -28,49 +28,50 @@ export GO_INSTALL="/home/jacobo/go"
 export PATH="$GO_INSTALL/bin:$PATH"
 
 #rclone mount points to google drive
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PROYECTO IDEA" $HOME/Documents/IDEA-REMOTE
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PERSONAL-WORK" $HOME/Documents/PERSONAL-WORK-REMOTE
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DATOS CASA (PINAR)" $HOME/Documents/HOME-DATA-REMOTE
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"UNIVERSIDAD NACIONAL" $HOME/Documents/UNIVERSITY-REMOTE
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gdd: $HOME/Documents/PERSONAL-DATA-REMOTE
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PROYECTO IDEA" "$HOME/Documents/IDEA-REMOTE"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PERSONAL-WORK" "$HOME/Documents/PERSONAL-WORK-REMOTE"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DATOS CASA (PINAR)" "$HOME/Documents/HOME-DATA-REMOTE"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"UNIVERSIDAD NACIONAL" "$HOME/Documents/UNIVERSITY-REMOTE"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gdd: "$HOME/Documents/PERSONAL-DATA-REMOTE"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DEV BOOKS" "$HOME/Documents/BOOKS"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+	export EDITOR='vim'
 else
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
 fi
 
 # if running zsh
 if [ -n "$ZSH_VERSION" ]; then
-    # include .bashrc if it exists 
-    if [ -f "$HOME/.zshrc" ]; then
-	. "$HOME/.zshrc"
-    fi
+	# include .bashrc if it exists
+	if [ -f "$HOME/.zshrc" ]; then
+		. "$HOME/.zshrc"
+	fi
 fi
 
 # set PATH so it includes yarn global bin folder if it exists
-if [ -d "$HOME/.yarn/bin" ] ; then
-    PATH="$HOME/.yarn/bin:$PATH"
+if [ -d "$HOME/.yarn/bin" ]; then
+	PATH="$HOME/.yarn/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
