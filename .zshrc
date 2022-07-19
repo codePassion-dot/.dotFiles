@@ -159,3 +159,6 @@ zplug load --verbose
 
 #direnv staff (manage gh config dir environment variable)
 eval "$(direnv hook zsh)"
+
+# react native custom debugger
+export REACT_DEBUGGER="rndebugger-open --open --port 8081"
