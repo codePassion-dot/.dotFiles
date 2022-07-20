@@ -15,11 +15,10 @@ ZSH_THEME="robbyrussell"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-autoload -U edit-command-line
 # Vi style:
-zle -N edit-command-line
-bindkey -v
+zle -N vi-easy-motion
+bindkey -M vicmd ' ' vi-easy-motion
+
 # To choose pygments style (see pygments documentation)
 ZSH_COLORIZE_STYLE="paraiso-dark"
 
@@ -78,6 +77,7 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
         zsh-syntax-highlighting
+        vi-mode
         common-aliases
         gh
         tmux
@@ -145,7 +145,7 @@ source ~/.zplug/init.zsh
 
 zplug 'wfxr/forgit'
 zplug "arzzen/calc.plugin.zsh"
-
+zplug "IngoMeyer441/zsh-easy-motion"
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
