@@ -27,8 +27,31 @@ return {
 			require("trouble").setup({})
 		end,
 	},
+	["folke/which-key.nvim"] = {
+		disable = false,
+	},
+	["williamboman/mason.nvim"] = {
+		ensure_installed = {
+			-- lua stuff
+			"lua-language-server",
+			"stylua",
+
+			-- web dev
+			"css-lsp",
+			"prettierd",
+			"html-lsp",
+			"typescript-language-server",
+			"deno",
+			"emmet-ls",
+			"json-lsp",
+			"vue-language-server",
+
+			-- shell
+			"shfmt",
+			"shellcheck",
+		},
+	},
 	["github/copilot.vim"] = {},
-	["jose-elias-alvarez/nvim-lsp-ts-utils"] = {},
 }
 
 -- load it after nvim-lspconfig cuz we lazy loaded lspconfig
