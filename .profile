@@ -41,7 +41,7 @@ rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DEV BOOKS" 
 if [[ -n $SSH_CONNECTION ]]; then
 	export EDITOR='vim'
 else
-	export EDITOR='vim'
+	export EDITOR='nvim'
 fi
 
 # if running bash
