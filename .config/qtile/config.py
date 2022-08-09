@@ -33,7 +33,7 @@ import os
 import subprocess
 
 mod = "mod4"
-terminal = f"gnome-terminal --hide-menubar"
+terminal = "hyper"
 
 keys = [
     # Switch between windows
