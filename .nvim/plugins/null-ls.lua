@@ -27,9 +27,6 @@ local sources = {
 	b.code_actions.eslint_d.with({
 		filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	}),
-	b.formatting.rustywind.with({
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	}),
 
 	-- Lua
 	b.formatting.stylua,
