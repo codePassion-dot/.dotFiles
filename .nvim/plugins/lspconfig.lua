@@ -13,9 +13,16 @@ for _, lsp in ipairs(servers) do
 					ignoredCodes = {
 						-- https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
 						7016, -- ts7016: The file is not a module.
+						6133, -- ts6133: '{0}' is declared but its value is never read.
 					},
 				},
 			},
+		})
+	elseif lsp == "volar" then
+		lspconfig.volar.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "vue" },
 		})
 	else
 		lspconfig[lsp].setup({
