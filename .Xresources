@@ -47,4 +47,4 @@ XTerm.vt100.faceName: DankMono Nerd Font Mono
 XTerm.vt100.faceSize: 16 
 XTerm.renderFont: true
 XTerm.vt100.allowBoldFonts: false 
-
+XTerm*selectToClipboard: true
