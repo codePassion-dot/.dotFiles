@@ -1,9 +1,13 @@
 return {
+
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
 		config = function()
 			require("custom.plugins.null-ls").setup()
 		end,
+	},
+	["ThePrimeagen/vim-be-good"] = {
+		cmd = "VimBeGood",
 	},
 	["windwp/nvim-ts-autotag"] = {
 		ft = { "html", "javascriptreact", "typescriptreact" },
@@ -13,12 +17,6 @@ return {
 			if present then
 				autotag.setup()
 			end
-		end,
-	},
-	["neovim/nvim-lspconfig"] = {
-		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.plugins.lspconfig")
 		end,
 	},
 	["folke/trouble.nvim"] = {
@@ -52,6 +50,12 @@ return {
 		},
 	},
 	["github/copilot.vim"] = {},
+	["neovim/nvim-lspconfig"] = {
+		config = function()
+			require("plugins.configs.lspconfig")
+			require("custom.plugins.lspconfig")
+		end,
+	},
 }
 
 -- load it after nvim-lspconfig cuz we lazy loaded lspconfig
