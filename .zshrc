@@ -125,7 +125,6 @@ fi
 if [ -f $ZSH_CUSTOM/.zsh_functions ]; then
     . $ZSH_CUSTOM/.zsh_functions;
 fi
-colorscript random
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
