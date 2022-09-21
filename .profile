@@ -9,7 +9,9 @@
 #umask 022
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/.local/bin:/home/jacobo/.config/rofi/bin:$PATH"
+export GO_INSTALL="$HOME/go"
+export DENO_INSTALL="$HOME/.deno"
+export FLYCTL_INSTALL="$HOME/.fly"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
 export SCRIPTS="$HOME/Documents/scripts"
@@ -17,23 +19,12 @@ export QTWEBENGINE_CHROMIUM_FLAGS=--widevine-path="/usr/lib/chromium/libwidevine
 export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
 export WHATSAPPWEBLINK=https://web.whatsapp.com/
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export JAVA_HOME=$HOME/.local/bin/android-studio/jre
-export FLYCTL_INSTALL="/home/jacobo/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-export DENO_INSTALL="/home/jacobo/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-export GO_INSTALL="/home/jacobo/go"
-export PATH="$GO_INSTALL/bin:$PATH"
+export ANDROID_STUDIO=$HOME/.local/bin/android-studio
+export PATH="$HOME/.local/bin:$HOME/.config/rofi/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:$FLYCTL_INSTALL/bin:$DENO_INSTALL/bin:$GO_INSTALL/bin:$ANDROID_STUDIO/bin:$PATH"
 
-#rclone mount points to google drive
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PROYECTO IDEA" "$HOME/Documents/IDEA-REMOTE"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"PERSONAL-WORK" "$HOME/Documents/PERSONAL-WORK-REMOTE"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DATOS CASA (PINAR)" "$HOME/Documents/HOME-DATA-REMOTE"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"UNIVERSIDAD NACIONAL" "$HOME/Documents/UNIVERSITY-REMOTE"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gdd: "$HOME/Documents/PERSONAL-DATA-REMOTE"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DEV BOOKS" "$HOME/Documents/BOOKS"
+# run xresources file
+xrdb "$HOME/.Xresources"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -74,4 +65,5 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
+
 . "$HOME/.cargo/env"
