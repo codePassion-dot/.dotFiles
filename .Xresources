@@ -39,11 +39,15 @@
 *color7: #acb0d0
 *color15: #b6badb
 
+
 XTerm*termName: xterm-256color
+URxvt*termName: rxvt-256color
 XTerm.vt100.locale: true
 XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.saveLines: 4096 
 XTerm.vt100.faceName: DankMono Nerd Font Mono  
+URxvt*font: xft:DankMono Nerd Font Mono:size=16
+st*font: DankMono Nerd Font Mono:size=16
 XTerm.vt100.faceSize: 16 
 XTerm.renderFont: true
 XTerm.vt100.allowBoldFonts: false 
