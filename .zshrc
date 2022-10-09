@@ -134,9 +134,8 @@ export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
 
-#zoxide
-eval "$(zoxide init zsh)"
 
+# nvm node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -144,7 +143,7 @@ export NVM_DIR="$HOME/.nvm"
 #zplug
 source ~/.zplug/init.zsh
 
-zplug 'wfxr/forgit'
+zplug "wfxr/forgit"
 zplug "arzzen/calc.plugin.zsh"
 zplug "IngoMeyer441/zsh-easy-motion"
 # Install plugins if there are plugins that have not been installed
@@ -165,3 +164,15 @@ eval "$(direnv hook zsh)"
 export REACT_DEBUGGER="rndebugger-open --open --port 8081"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# pyenv stuff
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# haskell stuff
+[ -f "/home/jacobo/.ghcup/env" ] && source "/home/jacobo/.ghcup/env" # ghcup-env
+
+#z init
+. $SCRIPTS/z.sh
