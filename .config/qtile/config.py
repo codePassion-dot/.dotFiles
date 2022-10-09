@@ -33,7 +33,7 @@ import os
 import subprocess
 
 mod = "mod4"
-terminal = "xterm"
+terminal = "kitty"
 
 keys = [
     # Switch between windows
