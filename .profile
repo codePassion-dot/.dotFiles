@@ -23,8 +23,6 @@ export JAVA_HOME=$HOME/.local/bin/android-studio/jre
 export ANDROID_STUDIO=$HOME/.local/bin/android-studio
 export PATH="$HOME/.local/bin:$HOME/.config/rofi/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:$FLYCTL_INSTALL/bin:$DENO_INSTALL/bin:$GO_INSTALL/bin:$ANDROID_STUDIO/bin:$PATH"
 
-# run xresources file
-xrdb "$HOME/.Xresources"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
