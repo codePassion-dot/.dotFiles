@@ -8,7 +8,7 @@ local override = require("custom.plugins.override")
 -- example of changing theme:
 
 M.ui = {
-	theme = "tokyonight",
+	theme = "rosepine",
 }
 
 M.mappings = require("custom.mappings")

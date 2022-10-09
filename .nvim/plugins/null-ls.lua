@@ -9,7 +9,7 @@ local b = null_ls.builtins
 local sources = {
 
 	-- webdev stuff
-	b.formatting.prettierd.with({
+	b.formatting.prettier.with({
 		filetypes = {
 			"html",
 			"markdown",
@@ -21,9 +21,15 @@ local sources = {
 			"vue",
 		},
 	}),
+
+	b.formatting.brittany.with({
+		filetypes = { "haskell" },
+	}),
+
 	b.diagnostics.eslint_d.with({
 		filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	}),
+
 	b.code_actions.eslint_d.with({
 		filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	}),
