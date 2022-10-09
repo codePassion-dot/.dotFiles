@@ -11,5 +11,6 @@ rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DATOS CASA 
 rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"UNIVERSIDAD NACIONAL" "$HOME/Documents/UNIVERSITY-REMOTE"
 rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gdd: "$HOME/Documents/PERSONAL-DATA-REMOTE"
 rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full gd:"DEV BOOKS" "$HOME/Documents/BOOKS"
+xrdb "$HOME/.Xresources"
 #noisetorch -s alsa_input.usb-Corsair_CORSAIR_VOID_ELITE_Wireless_Gaming_Dongle-00.mono-fallback -i &
 #redshift &
