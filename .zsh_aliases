@@ -32,9 +32,6 @@ alias vimrc="nvim ~/.vimrc" \
       pl="curl parrot.live" \
       rick="curl -s -L http://bit.ly/10hA8iC | bash" \
       ild="cd $HOME/Documents/IDEA-LOCAL" \
-      dbeaver="{flatpak run io.dbeaver.DBeaverCommunity > /dev/null 2>&1 &} && disown" \
-      discord="{flatpak run com.discordapp.Discord > /dev/null 2>&1 &} && disown" \
-      spotify="{flatpak run com.spotify.Client > /dev/null 2>&1 &} && disown" \
       zsha="nvim ~/.zsh_aliases" \
       zshf="nvim ~/.zsh_functions" \
       rcs="colorscript random" \
@@ -66,4 +63,5 @@ alias vimrc="nvim ~/.vimrc" \
       bcat="batcat" \
       duf="duf" \
       fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'" \
-      gspf="ncdu --exclude './Documents/*-REMOTE'"
+      gspf="ncdu --exclude './Documents/*-REMOTE'" \
+      rel="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"
