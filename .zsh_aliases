@@ -64,4 +64,7 @@ alias vimrc="nvim ~/.vimrc" \
       duf="duf" \
       fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'" \
       gspf="ncdu --exclude './Documents/*-REMOTE'" \
-      rel="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"
+      rel="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)" \
+      nvpns="nordvpn status" \
+      nvpnc="nordvpn connect" \
+      nvpnd="nordvpn disconnect" 
