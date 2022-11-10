@@ -56,14 +56,6 @@ return {
 			require("custom.plugins.lspconfig")
 		end,
 	},
-	["catppuccin/nvim"] = {
-		as = "catppuccin",
-		config = function()
-			vim.g.catppuccin_flavour = "macchiato"
-			require("catppuccin").setup()
-			vim.api.nvim_command("colorscheme catppuccin")
-		end,
-	},
 }
 
 -- load it after nvim-lspconfig cuz we lazy loaded lspconfig
