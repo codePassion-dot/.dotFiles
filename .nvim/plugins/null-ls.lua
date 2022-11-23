@@ -26,11 +26,11 @@ local sources = {
 		filetypes = { "haskell" },
 	}),
 
-	b.diagnostics.eslint_d.with({
+	b.diagnostics.eslint.with({
 		filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	}),
 
-	b.code_actions.eslint_d.with({
+	b.code_actions.eslint.with({
 		filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	}),
 
