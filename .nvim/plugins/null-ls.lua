@@ -22,6 +22,14 @@ local sources = {
 		},
 	}),
 
+	b.formatting.gofumpt.with({
+		filetypes = { "go" },
+	}),
+
+	b.diagnostics.staticcheck.with({
+		filetypes = { "go" },
+	}),
+
 	b.formatting.brittany.with({
 		filetypes = { "haskell" },
 	}),

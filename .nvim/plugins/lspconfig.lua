@@ -1,7 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
-local servers = { "html", "volar", "cssls", "bashls", "emmet_ls", "tsserver", "tailwindcss", "vuels", "hls" }
+local servers = { "html", "volar", "cssls", "bashls", "emmet_ls", "tsserver", "tailwindcss", "vuels", "hls", "gopls" }
 
 for _, lsp in ipairs(servers) do
 	if lsp == "tsserver" then
