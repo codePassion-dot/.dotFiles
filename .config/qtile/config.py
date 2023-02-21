@@ -28,7 +28,6 @@ from typing import List  # noqa: F401
 from libqtile import hook, bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 import os
 import subprocess
 
@@ -108,9 +107,9 @@ workspaces = {"1": "WWW",
 groups = []
 for workspace_id in workspaces:
     if workspace_id == "4":
-        windows_in_group = [Match(wm_class=["discord"])]
+        windows_in_group = [Match(wm_class="discord")]
     elif workspace_id == "7":
-        windows_in_group = [Match(wm_instance_class=["spotify"])]
+        windows_in_group = [Match(wm_instance_class="spotify")]
     elif workspace_id == "8":
         windows_in_group = [Match(title="Android Emulator - Pixel_XL_API_30:5554"),Match(title="SM-N770F")]
     else:
