@@ -30,6 +30,11 @@ local sources = {
 		filetypes = { "go" },
 	}),
 
+	--Markdown
+	b.diagnostics.alex.with({
+		filetypes = { "markdown" },
+	}),
+
 	b.formatting.brittany.with({
 		filetypes = { "haskell" },
 	}),
