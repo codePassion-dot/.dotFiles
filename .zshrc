@@ -9,7 +9,7 @@ eval `dircolors /home/jacobo/.dir_colors`
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="gozilla"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -131,8 +131,8 @@ fi
 #nnn
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
-BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
+export NNN_FCOLORS="0203040a000d0608090b0501"
+export NNN_COLORS='4652'
 
 
 # nvm node version manager
