@@ -26,7 +26,7 @@
 
 from typing import List  # noqa: F401
 from libqtile import hook, bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 import os
 import subprocess
@@ -90,6 +90,7 @@ keys = [
     #keyboard layout
     Key([mod],"space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 
+    
 ]
 
 
@@ -116,6 +117,7 @@ for workspace_id in workspaces:
         windows_in_group = []
     groups.append(Group(name = workspace_id, label = workspaces[workspace_id], matches = windows_in_group))
 
+
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
@@ -129,6 +131,23 @@ for i in groups:
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
         #     desc="move focused window to group {}".format(i.name)),
+    ])
+
+groups.extend([ScratchPad(name="scratchpad",dropdowns=[
+     DropDown(name="term",cmd="kitty",opacity= 0.8,x= 0.10,y= 0.10, height= 0.8)
+    ,DropDown(name="qtile shell",cmd= "urxvt -hold -e 'qtile shell'", config={
+           "opacity": 0.9,
+           "x": 0.05,
+           "y": 0.4,
+           "height": 0.6,
+           "on_focus_lost_hide": True
+         }) ])])
+
+keys.extend([
+    #scratchPad 
+    # toggle visibiliy of above defined DropDown named "term"
+    Key([mod], 'backslash', lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([], 'F12', lazy.group['scratchpad'].dropdown_toggle('qtile shell'))
     ])
 
 
