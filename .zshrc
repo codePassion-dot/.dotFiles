@@ -134,12 +134,6 @@ export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 export NNN_FCOLORS="0203040a000d0608090b0501"
 export NNN_COLORS='4652'
 
-
-# nvm node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 #zplug
 source ~/.zplug/init.zsh
 
@@ -176,3 +170,7 @@ eval "$(pyenv init -)"
 
 #z init
 . $SCRIPTS/z.sh
+
+# fnm
+export PATH="/home/jacobo/.local/share/fnm:$PATH"
+eval "`fnm env`"
