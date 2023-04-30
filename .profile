@@ -18,10 +18,11 @@ export SCRIPTS="$HOME/Documents/scripts"
 export QTWEBENGINE_CHROMIUM_FLAGS=--widevine-path="/usr/lib/chromium/libwidevinecdm.so"
 export KASPERSKYPWLINK=https://my.kaspersky.com/MyPasswords#/all
 export WHATSAPPWEBLINK=https://web.whatsapp.com/
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export JAVA_HOME=$HOME/.local/bin/android-studio/jre
-export ANDROID_STUDIO=$HOME/.local/bin/android-studio
-export PATH="$HOME/.local/bin:$HOME/.config/rofi/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:$FLYCTL_INSTALL/bin:$DENO_INSTALL/bin:$GO_INSTALL/bin:$ANDROID_STUDIO/bin:/usr/local/go/bin:$PATH"
+export ANDROID_HOME=$HOME/Android/Sdk
+export BOB_NVIM=$HOME/.local/share/bob/nvim-bin
+export JAVA_HOME=/usr/local/java/jdk-20
+export ANDROID_STUDIO=/usr/local/android-studio
+export PATH="$HOME/.local/bin:$BOB_NVIM:$HOME/.config/rofi/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$FLYCTL_INSTALL/bin:$DENO_INSTALL/bin:$GO_INSTALL/bin:$ANDROID_STUDIO/bin:/usr/local/go/bin:$PATH"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -64,3 +65,8 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 . "$HOME/.cargo/env"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/jacobo/.local/share/JetBrains/Toolbox/scripts"
+
