@@ -6,7 +6,17 @@
 [includeIf "gitdir:~/Documents/MELT-STUDIO/"]
     path = ~/.gitconfig.work
 [core]
-	editor = vim
+	editor = nvim 
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [init]
 	defaultBranch = main
 [commit]
