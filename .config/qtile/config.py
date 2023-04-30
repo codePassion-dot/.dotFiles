@@ -132,9 +132,14 @@ for i in groups:
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
         #     desc="move focused window to group {}".format(i.name)),
     ])
-
+opts = {
+        "opacity": 0.8,
+        "x": 0.10,
+        "y": 0.10,
+        "height": 0.8
+        }
 groups.extend([ScratchPad(name="scratchpad",dropdowns=[
-     DropDown(name="term",cmd="kitty",opacity= 0.8,x= 0.10,y= 0.10, height= 0.8)
+     DropDown(name="term",cmd="kitty",**opts)
     ,DropDown(name="qtile shell",cmd= "urxvt -hold -e 'qtile shell'", config={
            "opacity": 0.9,
            "x": 0.05,
@@ -147,7 +152,6 @@ keys.extend([
     #scratchPad 
     # toggle visibiliy of above defined DropDown named "term"
     Key([mod], 'backslash', lazy.group['scratchpad'].dropdown_toggle('term')),
-    Key([], 'F12', lazy.group['scratchpad'].dropdown_toggle('qtile shell'))
     ])
 
 
