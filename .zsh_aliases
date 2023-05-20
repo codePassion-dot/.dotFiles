@@ -59,7 +59,7 @@ alias vimrc="nvim ~/.vimrc" \
       cncmsg="config commit -m" \
       cnlg="config log --stat" \
       cnd="config diff" \
-      le="exa --header --long --git --icons --links --all" \
+      le="exa --header --long --icons --links --all" \
       bcat="batcat" \
       duf="duf" \
       fprev="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'" \
@@ -67,4 +67,6 @@ alias vimrc="nvim ~/.vimrc" \
       rel="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)" \
       nvpns="nordvpn status" \
       nvpnc="nordvpn connect" \
-      nvpnd="nordvpn disconnect" 
+      nvpnd="nordvpn disconnect" \
+      sail='[ -f sail ] && sh sail || sh vendor/bin/sail' \
+      lsp="ls | devicon-lookup --color" 
