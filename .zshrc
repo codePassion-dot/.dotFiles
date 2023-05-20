@@ -133,6 +133,7 @@ export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 export NNN_FCOLORS="0203040a000d0608090b0501"
 export NNN_COLORS='4652'
+export NNN_ICONLOOKUP=1
 
 #zplug
 source ~/.zplug/init.zsh
@@ -174,3 +175,11 @@ eval "$(pyenv init -)"
 # fnm
 export PATH="/home/jacobo/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# pnpm
+export PNPM_HOME="/home/jacobo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
