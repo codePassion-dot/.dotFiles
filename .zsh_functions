@@ -161,3 +161,13 @@ toggle-theme() {
 	# Update config for persistence
 	sed -i '' -e "s/include.*/include $new_theme/" "$HOME/.config/kitty/kitty.conf"
 }
+
+rgp() {
+  rg "$1" --color always | devicon-lookup --color --prefix : "${@:2}"
+}
+
+rgps() {
+  rg "$1" --color always | devicon-lookup -c -p : | fzf --ansi
+}
+
+
