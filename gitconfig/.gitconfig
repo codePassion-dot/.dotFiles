@@ -3,7 +3,7 @@
   useConfigOnly = true
 [include]
     path = ~/.gitconfig.university-work
-[includeIf "gitdir:~/Documents/MELT-STUDIO/"]
+[includeIf "gitdir:~/repos/work"]
     path = ~/.gitconfig.work
 [core]
 	editor = nvim 
