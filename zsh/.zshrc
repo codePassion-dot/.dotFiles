@@ -76,6 +76,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+        z
         zsh-syntax-highlighting
         vi-mode
         common-aliases
@@ -103,6 +104,8 @@ plugins=(git
         vscode
         chucknorris
         python
+        calc
+        forgit
         fzf-zsh-plugin)
 
 source $ZSH/oh-my-zsh.sh
@@ -119,12 +122,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Personal Aliases
-if [ -f $ZSH_CUSTOM/.zsh_aliases ]; then
-    . $ZSH_CUSTOM/.zsh_aliases;
+if [ -f $HOME/.zsh_aliases ]; then
+    . $HOME/.zsh_aliases;
 fi
-if [ -f $ZSH_CUSTOM/.zsh_functions ]; then
-    . $ZSH_CUSTOM/.zsh_functions;
+if [ -f $HOME/.zsh_functions ]; then
+    . $HOME/.zsh_functions;
 fi
+
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -134,23 +138,6 @@ export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 export NNN_FCOLORS="0203040a000d0608090b0501"
 export NNN_COLORS='4652'
 export NNN_ICONLOOKUP=1
-
-#zplug
-source ~/.zplug/init.zsh
-
-zplug "wfxr/forgit"
-zplug "arzzen/calc.plugin.zsh"
-zplug "IngoMeyer441/zsh-easy-motion"
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
 
 #direnv staff (manage gh config dir environment variable)
 eval "$(direnv hook zsh)"
@@ -169,9 +156,6 @@ eval "$(pyenv init -)"
 # haskell stuff
 [ -f "/home/jacobo/.ghcup/env" ] && source "/home/jacobo/.ghcup/env" # ghcup-env
 
-#z init
-. $SCRIPTS/z.sh
-
 # fnm
 export PATH="/home/jacobo/.local/share/fnm:$PATH"
 eval "`fnm env`"
@@ -183,3 +167,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# fnm
+export PATH="/home/jacobo/.local/share/fnm:$PATH"
+eval "`fnm env`"
