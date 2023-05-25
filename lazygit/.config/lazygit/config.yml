@@ -1,0 +1,15 @@
+customCommands:
+  - key: "r"
+    description: "Checkout a remote branch as FETCH_HEAD"
+    command: "git checkout {{ index .PromptResponses 1}}"
+    context: "remotes"
+    prompts:
+      - type: "input"
+        title: "Remote:"
+        initialValue: "{{index .SelectedRemote.Name }}"
+      - type: "menuFromCommand"
+        title: "Remote branch:"
+        command: "git branch  -r --list {{index .PromptResponses 0}}/*"
+        filter: ".*{{index .PromptResponses 0}}/(?P<branch>.*)"
+        valueFormat: "{{ .branch }}"
+        labelFormat: "{{ .branch | green }}"
