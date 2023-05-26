@@ -78,33 +78,41 @@ ENABLE_CORRECTION="true"
 plugins=(git
         z
         zsh-syntax-highlighting
+        alias-finder
+        npm
         vi-mode
         common-aliases
         gh
+        httpie      
         tmux
+        composer 
+        direnv 
+        thefuck
         emoji
-        debian
+        safe-paste
+        ubuntu
         history
+        ansible 
         docker-compose
         web-search
-        flutter
         copyfile
         extract
         colored-man-pages
         colorize
+        fnm 
         copybuffer
         copypath
         emoji-clock
         fancy-ctrl-z
         jsontools
         vundle
+        fd 
         zsh-interactive-cd
         command-not-found
-        pipenv
-        vscode
         chucknorris
         python
         calc
+        yarn
         forgit
         fzf-zsh-plugin)
 

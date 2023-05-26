@@ -2,7 +2,12 @@
 sa()
 {
     search_string="$@"
-    alias | grep $search_string 
+    alias-finder $search_string
+}
+sal()
+{
+    search_string="$@"
+    alias-finder -l $search_string
 }
 dceb()
 {
