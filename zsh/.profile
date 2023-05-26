@@ -9,8 +9,8 @@
 #umask 022
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export GO_INSTALL="$HOME/go"
 export DENO_INSTALL="$HOME/.deno"
+export GO_INSTALL="/usr/local/go/bin"
 export FLYCTL_INSTALL="$HOME/.fly"
 export DWM_PATCHES="$HOME/Documents/dwm_patches"
 export BACKGROUNDS="$HOME/Pictures"
