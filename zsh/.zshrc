@@ -87,7 +87,6 @@ plugins=(git
         tmux
         composer 
         direnv 
-        thefuck
         emoji
         safe-paste
         ubuntu
@@ -179,3 +178,6 @@ esac
 # fnm
 export PATH="/home/jacobo/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# kitty bug whit XDG_CONFIG_DIRS
+export KITTY_CONFIG_DIRECTORY=/home/jacobo/.config/kitty
