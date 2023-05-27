@@ -69,5 +69,4 @@ alias vimrc="nvim ~/.vimrc" \
       nvpnc="nordvpn connect" \
       nvpnd="nordvpn disconnect" \
       sail='[ -f sail ] && sh sail || sh vendor/bin/sail' \
-      lsp="ls | devicon-lookup --color"  \
-      bat="batcat"
+      lsp="ls | devicon-lookup --color"
