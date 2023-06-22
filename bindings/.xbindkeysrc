@@ -126,7 +126,7 @@ b:6
    Control+Alt+Mod2 + s
 "sleep 0.25 && launcher_ribbon"
    Alt + space
-"sleep 0.25 && pavucontrol"
+"sleep 0.25 && gnome-control-center sound"
    Control+Mod4 + p
 ##################################
 # End of xbindkeys configuration #
