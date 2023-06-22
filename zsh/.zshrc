@@ -77,7 +77,6 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
         z
-        fzf-tab
         zsh-syntax-highlighting
         alias-finder
         npm
@@ -113,6 +112,7 @@ plugins=(git
         python
         calc
         yarn
+        fzf-tab
         forgit
         fzf-zsh-plugin)
 
