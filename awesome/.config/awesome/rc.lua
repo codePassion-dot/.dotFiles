@@ -5,6 +5,9 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local scratch = require("scratch")
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -33,30 +36,6 @@ if awesome.startup_errors then
 		text = awesome.startup_errors,
 	})
 end
--- Scratchpad
--- Get the currnet focused screen
-local function centered_geometry(width, height)
-	width = width or awful.screen.focused().geometry.width * 0.7
-	height = height or awful.screen.focused().geometry.height * 0.9
-
-	return {
-		x = (awful.screen.focused().geometry.width / 2) - (width / 2),
-		y = (awful.screen.focused().geometry.height / 2) - (height / 2),
-		width = width,
-		height = height,
-	}
-end
-
-local term_scratch = bling.module.scratchpad({
-	command = "kitty --class=spad", -- How to spawn the scratchpad
-	rule = { instance = "spad" }, -- The rule that the scratchpad will be searched by
-	sticky = false, -- Whether the scratchpad should be sticky
-	autoclose = false, -- Whether it should hide itself when losing focus
-	floating = true, -- Whether it should be floating (MUST BE TRUE FOR ANIMATIONS)
-	geometry = centered_geometry(), -- The geometry in a floating state
-	reapply = true, -- Whether all those properties should be reapplied on every new opening of the scratchpad (MUST BE TRUE FOR ANIMATIONS)
-	dont_focus_before_close = false, -- When set to true, the scratchpad will be closed by the toggle function regardless of whether its focused or not. When set to false, the toggle function will first bring the scratchpad into focus and only close it on a second call
-})
 
 -- Handle runtime errors after startup
 do
@@ -302,7 +281,7 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 	-- Scratchpads
 	awful.key({ modkey }, "Escape", function()
-		term_scratch:toggle()
+		scratch.toggle("kitty --class scratch", { class = "scratch" })
 	end, { description = "toggle terminal scratchpad", group = "awesome" }),
 
 	-- Focus on tags
@@ -543,6 +522,23 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
 	-- All clients will match this rule.
+	{
+		rule_any = {
+			instance = { "scratch" },
+			class = { "scratch" },
+			icon_name = { "scratchpad_kitty" },
+		},
+		properties = {
+			skip_taskbar = false,
+			floating = true,
+			ontop = false,
+			minimized = true,
+			sticky = false,
+			width = screen_width * 0.7,
+			height = screen_height * 0.75,
+			screen = awful.screen.focused().index, -- Specify the focused screen index
+		},
+	},
 	{
 		rule = {},
 		properties = {
