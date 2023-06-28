@@ -1,0 +1,4 @@
+#! /bin/bash
+
+sh $HOME/.local/bin/create-rclone-mounts
+
