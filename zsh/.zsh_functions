@@ -175,4 +175,8 @@ rgps() {
   rg "$1" --color always | devicon-lookup -c -p : | fzf --ansi
 }
 
+od(){
+  npx uri-scheme open "$1" --android
+}
+
 
