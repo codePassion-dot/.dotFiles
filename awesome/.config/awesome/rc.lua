@@ -6,8 +6,6 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 local scratch = require("scratch")
-local screen_width = awful.screen.focused().geometry.width
-local screen_height = awful.screen.focused().geometry.height
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -17,8 +15,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- bling stuff
-local bling = require("bling")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
