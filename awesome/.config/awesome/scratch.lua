@@ -1,6 +1,5 @@
 local client = client
 local awful = require("awful")
-local util = require("awful.util")
 local gears = require("gears")
 
 local scratch = {}
@@ -9,27 +8,28 @@ local defaultRule = { instance = "scratch" }
 -- Turn on this scratch window client (add current tag to window's tags,
 -- then set focus to the window)
 local function turn_on(c)
-	local current_tag = awful.tag.selected(awful.screen.focused())
-	local ctags = { current_tag }
-	for _, tag in pairs(c:tags()) do
-		if tag ~= current_tag then
-			table.insert(ctags, tag)
-		end
-	end
-	c:tags(ctags)
+	local current_tag = awful.tag.selected(c.screen)
+	c:tags(awful.util.table.join({ current_tag }, c:tags()))
+
+	-- Move the scratch window to the focused screen
 	c:move_to_screen(awful.screen.focused())
+
 	c:raise()
 	client.focus = c
 
-	-- Center the scratchpad window on the focused screen
+	-- Apply dimensions to the scratchpad window
+	scratch.apply_dimensions(c)
+
+	-- Scale and center the scratchpad window on the focused screen
 	gears.timer.delayed_call(function()
+		awful.placement.scale(c, { to_percent = 0.8 })
 		awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
 	end)
 end
 
 -- Turn off this scratch window client (remove current tag from window's tags)
 local function turn_off(c)
-	local current_tag = awful.tag.selected(awful.screen.focused())
+	local current_tag = awful.tag.selected(c.screen)
 	local ctags = {}
 	for _, tag in pairs(c:tags()) do
 		if tag ~= current_tag then
@@ -39,35 +39,73 @@ local function turn_off(c)
 	c:tags(ctags)
 end
 
-function scratch.raise(cmd, rule)
-	local safe_rule = rule or defaultRule
-	local function matcher(c)
-		return awful.rules.match(c, safe_rule)
+-- Calculate the dimensions based on the screen size and orientation
+function scratch.calculate_dimensions(c)
+	local screen = c.screen
+	local screen_geometry = screen.geometry
+	local width_ratio = 0.7 -- Width ratio relative to the screen
+	local height_ratio = 0.75 -- Height ratio relative to the screen
+
+	local width, height
+
+	if screen_geometry.width > screen_geometry.height then
+		width = screen_geometry.width * width_ratio
+		height = screen_geometry.height * height_ratio
+	else
+		width = screen_geometry.height * width_ratio
+		height = screen_geometry.width * height_ratio
 	end
 
-	-- logic mostly copied from awful.client.run_or_raise, except we don't want
-	-- to change to or merge with scratchpad tag, just show the window
-	local clients = client.get()
-	local findex = util.table.hasitem(clients, client.focus) or 1
-	local start = util.cycle(#clients, findex + 1)
+	return width, height
+end
+
+-- Apply the calculated dimensions to the scratchpad window
+function scratch.apply_dimensions(c)
+	local width, height = scratch.calculate_dimensions(c)
+	c.width = width
+	c.height = height
+end
+
+function scratch.raise(cmd, rule)
+	local safe_rule = rule or defaultRule
+
+	-- Find the scratch window client
+	local focused_screen = awful.screen.focused()
+	local start = focused_screen.index
+	local matcher = function(c)
+		return awful.rules.match(c, safe_rule)
+	end
 
 	for c in awful.client.iterate(matcher, start) do
 		turn_on(c)
 		return
 	end
 
-	-- client not found, spawn it
-	util.spawn(cmd)
+	-- If the client is not found, spawn a new scratch window
+	awful.spawn(cmd)
 end
 
 function scratch.toggle(cmd, rule)
 	local safe_rule = rule or defaultRule
 
-	if client.focus and awful.rules.match(client.focus, safe_rule) then
-		turn_off(client.focus)
-	else
-		scratch.raise(cmd, safe_rule)
+	-- Find the scratch window client
+	local focused_screen = awful.screen.focused()
+	local start = focused_screen.index
+	local matcher = function(c)
+		return awful.rules.match(c, safe_rule)
 	end
+
+	for c in awful.client.iterate(matcher, start) do
+		if c == client.focus then
+			turn_off(c)
+		else
+			turn_on(c)
+		end
+		return
+	end
+
+	-- If the client is not found, spawn a new scratch window
+	awful.spawn(cmd)
 end
 
 return scratch

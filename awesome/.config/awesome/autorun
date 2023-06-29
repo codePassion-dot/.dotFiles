@@ -1,4 +1,6 @@
 #! /bin/bash
 
+xbindkeys &
 sh $HOME/.local/bin/create-rclone-mounts
+
 

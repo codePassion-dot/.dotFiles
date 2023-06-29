@@ -534,8 +534,6 @@ awful.rules.rules = {
 			ontop = false,
 			minimized = true,
 			sticky = false,
-			width = screen_width * 0.7,
-			height = screen_height * 0.75,
 			screen = awful.screen.focused().index, -- Specify the focused screen index
 		},
 	},
