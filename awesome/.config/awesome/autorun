@@ -1,5 +1,5 @@
 #! /bin/bash
-
+feh --bg-scale $HOME/Pictures/relax-waifu.jpg $HOME/Pictures/waifu-vertical.png &
 xbindkeys &
 picom &
 copyq &
