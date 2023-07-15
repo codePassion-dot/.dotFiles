@@ -330,9 +330,23 @@ clientkeys = gears.table.join(
 		c:swap(awful.client.getmaster())
 	end, { description = "move to master", group = "client" }),
 	awful.key({ modkey }, "s", function(c)
-		c:move_to_screen()
-	end, { description = "move to screen", group = "client" }),
+		local current_screen = awful.screen.focused()
+		local target_screen = current_screen.index + 1
+		if target_screen > screen.count() then
+			target_screen = 1
+		end
 
+		-- Move the client to the next screen
+		c:move_to_screen(target_screen)
+
+		-- Apply dimensions to the scratchpad window
+		scratch.apply_dimensions(c)
+
+		-- Scale and center the scratchpad window on the new screen
+		gears.timer.delayed_call(function()
+			awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
+		end)
+	end, { description = "move to screen", group = "client" }),
 	-- Resize windows
 	awful.key({ modkey, "Control" }, "Up", function(c)
 		if c.floating then

@@ -43,16 +43,19 @@ function scratch.calculate_dimensions(c)
 	local screen = c.screen
 	local screen_geometry = screen.geometry
 	local width_ratio = 0.7 -- Width ratio relative to the screen
-	local height_ratio = 0.75 -- Height ratio relative to the screen
+	local height_ratio_horizontal = 0.7 -- Height ratio relative to the screen for horizontal screens
+	local height_ratio_vertical = 0.75 -- Height ratio relative to the screen for vertical screens
 
 	local width, height
 
 	if screen_geometry.width > screen_geometry.height then
+		-- Horizontal screen
 		width = screen_geometry.width * width_ratio
-		height = screen_geometry.height * height_ratio
+		height = screen_geometry.height * height_ratio_horizontal
 	else
-		width = screen_geometry.height * width_ratio
-		height = screen_geometry.width * height_ratio
+		-- Vertical screen
+		width = screen_geometry.width * width_ratio
+		height = screen_geometry.height * height_ratio_vertical
 	end
 
 	return width, height
