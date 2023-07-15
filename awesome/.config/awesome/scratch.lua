@@ -22,7 +22,6 @@ local function turn_on(c)
 
 	-- Scale and center the scratchpad window on the focused screen
 	gears.timer.delayed_call(function()
-		awful.placement.scale(c, { to_percent = 0.8 })
 		awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
 	end)
 end
@@ -82,7 +81,12 @@ function scratch.raise(cmd, rule)
 	end
 
 	-- If the client is not found, spawn a new scratch window
-	awful.spawn(cmd)
+	awful.spawn(cmd, {
+		rule = safe_rule,
+		callback = function(c)
+			turn_on(c)
+		end,
+	})
 end
 
 function scratch.toggle(cmd, rule)
@@ -105,7 +109,12 @@ function scratch.toggle(cmd, rule)
 	end
 
 	-- If the client is not found, spawn a new scratch window
-	awful.spawn(cmd)
+	awful.spawn(cmd, {
+		rule = safe_rule,
+		callback = function(c)
+			turn_on(c)
+		end,
+	})
 end
 
 return scratch
