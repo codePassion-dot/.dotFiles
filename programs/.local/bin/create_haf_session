@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check if tmux is installed
+if ! command -v tmux &>/dev/null; then
+    echo "Tmux is not installed. Please install tmux first."
+    exit 1
+fi
+
+# Start a new tmux session named "haf" and detach it immediately
+tmux new-session -d -s haf -c ~/repos/work/haf-mobile
+
+# Create three windows within the "haf" session and run commands in each window
+tmux new-window -t haf:0 -n "editor" -c ~/repos/work/haf-mobile 'nvim'
+tmux new-window -t haf:1 -n "server" -c ~/repos/work/haf-mobile 'yarn android'
+tmux new-window -t haf:2 -n "phone" -c ~/repos/work/haf-mobile 'scrcpy'
+tmux new-window -t haf:3 -n "term" -c ~/repos/work/haf-mobile
+
+# Attach to the newly created "haf" session with the first window selected
+tmux attach-session -t haf
