@@ -111,6 +111,7 @@ plugins=(git
         chucknorris
         python
         calc
+        universalarchive
         yarn
         fzf-tab
         forgit
