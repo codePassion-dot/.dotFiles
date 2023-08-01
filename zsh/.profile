@@ -31,6 +31,11 @@ else
 	export EDITOR='nvim'
 fi
 
+# add luarocks local path
+if [[ -n "`which luarocks 2>/dev/null`" ]]; then
+    eval `luarocks path --bin`
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
 	# include .bashrc if it exists
