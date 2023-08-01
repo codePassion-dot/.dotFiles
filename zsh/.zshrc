@@ -210,9 +210,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# fnm
-export PATH="/home/jacobo/.local/share/fnm:$PATH"
-eval "`fnm env`"
-
 # kitty bug whit XDG_CONFIG_DIRS
 export KITTY_CONFIG_DIRECTORY=/home/jacobo/.config/kitty
