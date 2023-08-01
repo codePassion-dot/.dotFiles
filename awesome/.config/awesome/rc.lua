@@ -134,6 +134,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = myma
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- battery widget
+local battery_widget = require("battery-widget")
+
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -237,6 +240,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+			battery_widget({}),
 			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
