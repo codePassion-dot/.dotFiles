@@ -10,6 +10,7 @@ return {
         nls.builtins.formatting.prettier,
         nls.builtins.formatting.stylua,
         nls.builtins.formatting.phpcsfixer,
+        nls.builtins.formatting.black,
         nls.builtins.diagnostics.stylelint.with({
           filetypes = { "scss", "less", "css", "sass", "typescriptreact", "javascriptreact" },
         }),
