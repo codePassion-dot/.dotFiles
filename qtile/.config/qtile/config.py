@@ -29,6 +29,7 @@ import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
+from libqtile import qtile
 from themes.tokyonight import colors
 
 
@@ -160,9 +161,18 @@ groups.append(
     )
 )
 
+colors = colors["night"]
+
+layout_theme = {
+    "border_width": 2,
+    "margin": 10,
+    "border_focus": colors["magenta"],
+    "border_normal": colors["black"],
+}
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
+    layout.Columns(**layout_theme, border_focus_stack=colors["red"]),
+    layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -183,28 +193,146 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+common_widgets = {
+    "groups": widget.GroupBox(
+        highlight_method="text",
+        active=colors["magenta"],  # not current active font color
+        inactive=colors["fg"],
+        rounded=False,
+        disable_drag=True,
+        highlight_color=colors["red"],
+        this_current_screen_border=colors[
+            "magenta"
+        ],  # current active font color - MAIN
+        this_screen_border=colors["magenta"],
+        other_current_screen_border=colors["bg"],
+        other_screen_border=colors["bg"],
+        urgent_border=colors["red"],
+        urgent_text=colors["red"],
+        # foreground = colors["fg"],
+        # background = colors["red"],
+        # hide_unused=True,
+    ),
+    "key_chord": widget.Chord(
+        chords_colors={
+            "launch": ("#ff0000", "#ffffff"),
+        },
+        name_transform=lambda name: name.upper(),
+    ),
+    "clock": widget.Clock(format="%R - %d-%m"),
+    "spacer": widget.Spacer(length=bar.STRETCH),
+}
+
+
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                # widget.CurrentLayout(),
+                common_widgets["groups"],
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
+                # widget.WindowName(),
+                common_widgets["spacer"],
+                common_widgets["key_chord"],
+                # widget.TextBox("this is not default       ", name="default"),
+                # widget.Sep(),
+                widget.CheckUpdates(
+                    distro="Debian",
+                    update_interval=1800,
+                    display_format="Updates: {updates}",
+                    foreground=colors["blue"],
+                    background=colors["bg"],
+                    no_update_string="No updates",
+                    colour_have_updates=colors["blue"],
+                    colour_no_updates=colors["red"],
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn(
+                            terminal + " --hold sudo apt upgrade"
+                        )
                     },
-                    name_transform=lambda name: name.upper(),
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                # widget.TextBox(
+                #    text="",
+                #    foreground = colors["red"],
+                #    ),
+                widget.Wttr(
+                    location={"5.0810923,-75.6995723": "Farm"}, format="%C, %t"
+                ),
+                # widget.TextBox(
+                #    text='',
+                #    foreground = colors["red"],
+                #    ),
+                # widget.Sep(),
+                widget.TextBox(
+                    text="",
+                    foreground=colors["red"],
+                ),
+                widget.Net(
+                    use_bits=True,
+                    prefix="M",
+                    format="↓ {down} ↑ {up}",
+                    interface="enp7s0",
+                ),
+                # widget.TextBox(
+                #    text='',
+                #    foreground = colors["red"],
+                #    ),
+                # widget.Sep(),
+                widget.TextBox(
+                    text="",
+                    foreground=colors["red"],
+                ),
+                widget.CPU(format="  {load_percent}%"),
+                # widget.TextBox(
+                #    text='',
+                #    foreground = colors["red"],
+                #    ),
+                widget.TextBox(
+                    text="",
+                    foreground=colors["red"],
+                ),
+                # widget.Sep(),
+                widget.ThermalSensor(
+                    format=" {temp:.0f}{unit}",
+                    tag_sensor="Tctl",
+                    threshold=60,
+                    foreground_alert=colors["red"],
+                    foreground=colors["fg"],
+                ),
+                # widget.Sep(),
+                # widget.TextBox(
+                #    text='',
+                #    foreground = colors["red"],
+                #    ),
+                widget.TextBox(
+                    text="",
+                    foreground=colors["red"],
+                ),
+                widget.Memory(
+                    format="RAM:{MemUsed: .0f}{mm}",
+                    measure_mem="G",
+                    update_interval=5,
+                ),
+                widget.TextBox(
+                    # text='',
+                    text="",
+                    foreground=colors["red"],
+                ),
+                # widget.Sep(),
+                common_widgets["clock"],
+                # widget.QuickExit(),
             ],
-            24,
+            25,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            margin=[
+                3,
+                10,
+                0,
+                10,
+            ],  # Draw top and bottom borders   [ top, right, bottom, left ]
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
@@ -214,23 +342,21 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                common_widgets["groups"],
+                common_widgets["spacer"],
+                common_widgets["key_chord"],
+                common_widgets["clock"],
                 widget.QuickExit(),
             ],
-            24,
+            25,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            margin=[
+                3,
+                10,
+                0,
+                10,
+            ],  # Draw top and bottom borders   [ top, right, bottom, left ]
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
