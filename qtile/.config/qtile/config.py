@@ -222,6 +222,11 @@ common_widgets = {
     ),
     "clock": widget.Clock(format="%R - %d-%m"),
     "spacer": widget.Spacer(length=bar.STRETCH),
+    "current_layout_icon": widget.CurrentLayoutIcon(
+        padding=0,
+        scale=0.7,
+    ),
+    "current_layout_name": widget.CurrentLayout(),
 }
 
 
@@ -232,6 +237,8 @@ screens = [
                 # widget.CurrentLayout(),
                 common_widgets["groups"],
                 widget.Prompt(),
+                common_widgets["current_layout_icon"],
+                common_widgets["current_layout_name"],
                 # widget.WindowName(),
                 common_widgets["spacer"],
                 common_widgets["key_chord"],
@@ -343,6 +350,8 @@ screens = [
         top=bar.Bar(
             [
                 common_widgets["groups"],
+                common_widgets["current_layout_icon"],
+                common_widgets["current_layout_name"],
                 common_widgets["spacer"],
                 common_widgets["key_chord"],
                 common_widgets["clock"],
