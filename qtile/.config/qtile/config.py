@@ -201,9 +201,9 @@ extension_defaults = widget_defaults.copy()
 
 common_widgets = {
     "groups": widget.GroupBox(
-        highlight_method="text",
         active=colors["magenta"],  # not current active font color
         inactive=colors["fg"],
+        borderwidth=1,
         rounded=False,
         disable_drag=True,
         highlight_color=colors["red"],
