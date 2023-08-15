@@ -112,7 +112,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "escape", lazy.group["scratchpad"].dropdown_toggle("term")),
-    Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("qtile shell")),
+    Key([mod, "shift"], "escape", lazy.group["scratchpad"].dropdown_toggle("updates")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -156,7 +156,12 @@ groups.append(
         "scratchpad",
         [
             # kitty term
-            DropDown("term", "kitty", **options)
+            DropDown("term", "kitty", **options),
+            DropDown(
+                "updates",
+                "kitty --hold /home/jacobo/.local/bin/update_packages",
+                **options
+            ),
         ],
     )
 )
@@ -251,12 +256,10 @@ screens = [
                     foreground=colors["blue"],
                     background=colors["bg"],
                     no_update_string="No updates",
-                    colour_have_updates=colors["blue"],
-                    colour_no_updates=colors["red"],
+                    colour_have_updates=colors["red"],
+                    colour_no_updates=colors["blue"],
                     mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn(
-                            terminal + " --hold sudo apt upgrade"
-                        )
+                        "Button1": lazy.group["scratchpad"].dropdown_toggle("updates"),
                     },
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
@@ -354,6 +357,7 @@ screens = [
                 common_widgets["current_layout_name"],
                 common_widgets["spacer"],
                 common_widgets["key_chord"],
+                widget.Systray(),
                 common_widgets["clock"],
                 widget.QuickExit(),
             ],
