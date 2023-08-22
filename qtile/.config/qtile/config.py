@@ -158,7 +158,7 @@ groups.append(
             DropDown("term", "kitty", **options),
             DropDown(
                 "updates",
-                "kitty --hold /home/jacobo/.local/bin/update_packages",
+                "kitty --hold sh -c '/home/jacobo/.local/bin/update_packages'",
                 **options
             ),
         ],
