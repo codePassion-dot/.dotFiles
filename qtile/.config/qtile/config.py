@@ -160,7 +160,7 @@ groups.append(
             DropDown(
                 "updates",
                 "kitty --hold sh -c '/home/jacobo/.local/bin/update_packages'",
-                **options
+                **options,
             ),
         ],
     )
@@ -191,16 +191,18 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+
 def is_laptop():
     try:
         # Check if there is any battery present on the system
         battery = psutil.sensors_battery()
         if battery is not None:
-            return True 
+            return True
         else:
-            return False 
+            return False
     except Exception as e:
-         return f"Error: {str(e)}"
+        return f"Error: {str(e)}"
+
 
 widget_defaults = dict(
     font="sans",
@@ -317,7 +319,7 @@ screens = [
                 # widget.Sep(),
                 widget.ThermalSensor(
                     format=" {temp:.0f}{unit}",
-                    tag_sensor= is_laptop() and "Package id 0" or "Tctl",
+                    tag_sensor=is_laptop() and "Package id 0" or "Tctl",
                     threshold=60,
                     foreground_alert=colors["red"],
                     foreground=colors["fg"],
@@ -341,12 +343,26 @@ screens = [
                     text="",
                     foreground=colors["red"],
                 ),
-                (is_laptop() and widget.Battery(format="{percent: 2.0%}")) or widget.TextBox(""),
+                (is_laptop() and widget.Battery(format="{percent: 2.0%}"))
+                or widget.TextBox(""),
                 (is_laptop() and widget.BatteryIcon()) or widget.TextBox(""),
-                (is_laptop() and widget.TextBox(
-                    text="",
-                    foreground=colors["red"],
-                )) or widget.TextBox(""),
+                (
+                    is_laptop()
+                    and widget.TextBox(
+                        text="",
+                        foreground=colors["red"],
+                    )
+                )
+                or widget.TextBox(""),
+                (is_laptop() and widget.Systray()) or widget.TextBox(""),
+                (
+                    is_laptop()
+                    and widget.TextBox(
+                        text="",
+                        foreground=colors["red"],
+                    )
+                )
+                or widget.TextBox(""),
                 # widget.Sep(),
                 common_widgets["clock"],
                 # widget.QuickExit(),
