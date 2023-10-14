@@ -1,6 +1,5 @@
 return {
   "stevearc/aerial.nvim",
-  keys = { { "<leader>cs", "<cmd>AerialToggle!<cr>", desc = "Symbols Outline" } },
   opts = {
     close_behavior = "global",
     backends = { "lsp", "treesitter", "markdown" },
