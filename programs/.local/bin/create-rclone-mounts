@@ -1,4 +1,3 @@
 #!/bin/bash
 
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full drive-volatile: "$HOME/Drive"
-rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full drive-persistent: "$HOME/Drive_Persistent"
+rclone mount --daemon --dir-cache-time 30m --vfs-cache-mode full google-drive-personal: "$HOME/Drive"
