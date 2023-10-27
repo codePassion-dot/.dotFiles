@@ -67,9 +67,9 @@ if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-. "$HOME/.cargo/env"
 
 
 # Added by Toolbox App
 export PATH="$PATH:/home/jacobo/.local/share/JetBrains/Toolbox/scripts"
 
+. "$HOME/.cargo/env"
