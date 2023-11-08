@@ -1,6 +1,7 @@
 #! /bin/bash
 feh --bg-scale $HOME/Pictures/relax-waifu.jpg $HOME/Pictures/waifu-vertical.png &
 xbindkeys &
+redshift &
 flameshot &
 picom --experimental-backend --transparent-clipping &
 copyq &
