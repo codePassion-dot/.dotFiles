@@ -32,8 +32,8 @@ else
 fi
 
 # add luarocks local path
-if [[ -n "`which luarocks 2>/dev/null`" ]]; then
-    eval `luarocks path --bin`
+if [[ -n "$(which luarocks 2>/dev/null)" ]]; then
+	eval $(luarocks path --bin)
 fi
 
 # if running bash
@@ -66,8 +66,6 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
-
-
 
 # Added by Toolbox App
 export PATH="$PATH:/home/jacobo/.local/share/JetBrains/Toolbox/scripts"
