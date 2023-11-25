@@ -1,5 +1,5 @@
 #! /bin/bash
-feh --bg-scale $HOME/Pictures/relax-waifu.jpg $HOME/Pictures/waifu-vertical.png &
+feh --bg-scale $HOME/.dotfiles/qtile/.config/qtile/icons/relax-waifu.jpeg $HOME/.dotfiles/qtile/.config/qtile/icons/waifu-vertical.jpeg &
 xbindkeys &
 redshift &
 flameshot &
