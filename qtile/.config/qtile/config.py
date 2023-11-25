@@ -203,6 +203,27 @@ def is_laptop():
     except Exception as e:
         return f"Error: {str(e)}"
 
+def get_cpu_sensor_label():
+    try:
+        sensors = psutil.sensors_temperatures()
+        cpu_sensors = sensors.get('coretemp', []) 
+        if (len(cpu_sensors) > 0):
+            return cpu_sensors[0].label
+        else:
+            return "No label"
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+def get_interface(type):
+    try:
+        interfaces = psutil.net_if_addrs()
+        ethernet_interfaces = [x for x in interfaces if x.startswith(type == "wired" and "en" or "wlp")]
+        if (len(ethernet_interfaces) == 0):
+            return "No interface"
+        return ethernet_interfaces[0]
+    except Exception as e:
+        return f"Error: {str(e)}"
+
 
 widget_defaults = dict(
     font="sans",
@@ -296,7 +317,7 @@ screens = [
                     use_bits=True,
                     prefix="M",
                     format="↓ {down} ↑ {up}",
-                    interface=is_laptop() and "wlp8s0" or "enp7s0",
+                    interface=is_laptop() and get_interface("wifi") or get_interface("wired"),
                 ),
                 # widget.TextBox(
                 #    text='',
@@ -319,7 +340,7 @@ screens = [
                 # widget.Sep(),
                 widget.ThermalSensor(
                     format=" {temp:.0f}{unit}",
-                    tag_sensor=is_laptop() and "Package id 0" or "Tctl",
+                    tag_sensor=get_cpu_sensor_label(),
                     threshold=60,
                     foreground_alert=colors["red"],
                     foreground=colors["fg"],
