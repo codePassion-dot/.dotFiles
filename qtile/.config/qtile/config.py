@@ -147,7 +147,7 @@ options = {
     "y": 0.20,
     "width": 0.7,
     "height": 0.6,
-    "opacity": 0.9,
+    "opacity": 1.0,
     "on_focus_lost_hide": False,
 }
 
@@ -203,22 +203,26 @@ def is_laptop():
     except Exception as e:
         return f"Error: {str(e)}"
 
+
 def get_cpu_sensor_label():
     try:
         sensors = psutil.sensors_temperatures()
-        cpu_sensors = sensors.get('coretemp', []) 
-        if (len(cpu_sensors) > 0):
+        cpu_sensors = sensors.get("coretemp", []) or sensors.get("k10temp", [])
+        if len(cpu_sensors) > 0:
             return cpu_sensors[0].label
         else:
             return "No label"
     except Exception as e:
         return f"Error: {str(e)}"
 
+
 def get_interface(type):
     try:
         interfaces = psutil.net_if_addrs()
-        ethernet_interfaces = [x for x in interfaces if x.startswith(type == "wired" and "en" or "wlp")]
-        if (len(ethernet_interfaces) == 0):
+        ethernet_interfaces = [
+            x for x in interfaces if x.startswith(type == "wired" and "en" or "wlp")
+        ]
+        if len(ethernet_interfaces) == 0:
             return "No interface"
         return ethernet_interfaces[0]
     except Exception as e:
@@ -317,7 +321,9 @@ screens = [
                     use_bits=True,
                     prefix="M",
                     format="↓ {down} ↑ {up}",
-                    interface=is_laptop() and get_interface("wifi") or get_interface("wired"),
+                    interface=is_laptop()
+                    and get_interface("wifi")
+                    or get_interface("wired"),
                 ),
                 # widget.TextBox(
                 #    text='',
