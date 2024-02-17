@@ -212,3 +212,10 @@ esac
 
 # kitty bug whit XDG_CONFIG_DIRS
 export KITTY_CONFIG_DIRECTORY=/home/jacobo/.config/kitty
+
+# bun completions
+[ -s "/home/jacobo/.bun/_bun" ] && source "/home/jacobo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
