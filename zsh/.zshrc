@@ -200,7 +200,7 @@ eval "$(pyenv init -)"
 
 # fnm
 export PATH="/home/jacobo/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd)"
 
 # pnpm
 export PNPM_HOME="/home/jacobo/.local/share/pnpm"
