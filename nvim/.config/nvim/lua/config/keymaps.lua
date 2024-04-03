@@ -6,3 +6,14 @@
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- diffview
+vim.keymap.set(
+  "n",
+  "<leader>gdc",
+  "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>",
+  { desc = "close Diffview" }
+)
+vim.keymap.set("n", "<leader>gdo", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
+vim.keymap.set("n", "<leader>gdfc", "<cmd>DiffviewFileHistory %<cr>", { desc = "FileHistory current branch" })
+vim.keymap.set("n", "<leader>gdfb", "<cmd>DiffviewFileHistory<cr>", { desc = "FileHistory current file" })
