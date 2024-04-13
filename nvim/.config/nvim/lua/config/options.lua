@@ -9,3 +9,4 @@ opt.foldcolumn = "1" -- '0' is not bad
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 opt.foldenable = true
+opt.clipboard = "unnamed"
