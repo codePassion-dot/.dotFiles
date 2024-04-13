@@ -142,10 +142,17 @@ fi
 #source /home/jacobo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #nnn
+# This second option relies on you're terminal using the catppuccin theme and well use true catppuccin colors:
+BLK="03" CHR="03" DIR="04" EXE="02" REG="07" HARDLINK="05" SYMLINK="05" MISSING="08" ORPHAN="01" FIFO="06" SOCK="03" UNKNOWN="01"
+
+# Export Context Colors
+export NNN_COLORS="#04020301;4231"
+
+# Finally Export the set file colors ( Both options require this)
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
 export NNN_FCOLORS="0203040a000d0608090b0501"
-export NNN_COLORS='4652'
 export NNN_ICONLOOKUP=1
 
 #direnv staff (manage gh config dir environment variable)
