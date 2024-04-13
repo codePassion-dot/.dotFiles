@@ -17,3 +17,6 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>gdo", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
 vim.keymap.set("n", "<leader>gdfc", "<cmd>DiffviewFileHistory %<cr>", { desc = "FileHistory current branch" })
 vim.keymap.set("n", "<leader>gdfb", "<cmd>DiffviewFileHistory<cr>", { desc = "FileHistory current file" })
+
+-- codeSnap
+vim.keymap.set("v", "<leader>cp", "<cmd>'<,'>CodeSnap<cr>", { desc = "code screenshot" })
