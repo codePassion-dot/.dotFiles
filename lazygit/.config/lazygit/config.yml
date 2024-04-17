@@ -13,3 +13,12 @@ customCommands:
         filter: ".*{{index .PromptResponses 0}}/(?P<branch>.*)"
         valueFormat: "{{ .branch }}"
         labelFormat: "{{ .branch | green }}"
+  - key: "R"
+    description: "Rename branch updating remote"
+    context: "localBranches"
+    command: "git rename-branch {{.SelectedLocalBranch.Name}} {{index .PromptResponses 0}}"
+    loadingText: "Loading..."
+    subprocess: true
+    prompts:
+      - type: "input"
+        title: "Enter then new name of the branch:"
