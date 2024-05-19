@@ -226,3 +226,6 @@ export KITTY_CONFIG_DIRECTORY=/home/jacobo/.config/kitty
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Turso
+export PATH="/home/jacobo/.turso:$PATH"
