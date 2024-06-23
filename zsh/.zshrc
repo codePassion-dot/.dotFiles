@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jacobo/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export GPG_TTY=$(tty)
-eval `dircolors /home/jacobo/.dir_colors`
+eval `dircolors $HOME/.dir_colors`
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -203,14 +203,14 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # haskell stuff
-[ -f "/home/jacobo/.ghcup/env" ] && source "/home/jacobo/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # fnm
-export PATH="/home/jacobo/.local/share/fnm:$PATH"
+export PATH="$HOME/.local/share/fnm:$PATH"
 eval "$(fnm env --use-on-cd)"
 
 # pnpm
-export PNPM_HOME="/home/jacobo/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -218,14 +218,14 @@ esac
 # pnpm end
 
 # kitty bug whit XDG_CONFIG_DIRS
-export KITTY_CONFIG_DIRECTORY=/home/jacobo/.config/kitty
+export KITTY_CONFIG_DIRECTORY=$HOME/.config/kitty
 
 # bun completions
-[ -s "/home/jacobo/.bun/_bun" ] && source "/home/jacobo/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Turso
-export PATH="/home/jacobo/.turso:$PATH"
+export PATH="$HOME/.turso:$PATH"
