@@ -123,6 +123,10 @@ fal()
 {
   fdfind "$1" -X batcat
 }
+rcb()
+{
+ $1 > /dev/null 2>&1 & disown
+}
 n ()
 {
     # Block nesting of nnn in subshells
