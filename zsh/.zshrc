@@ -105,17 +105,16 @@ plugins=(git
         fancy-ctrl-z
         jsontools
         vundle
-        fd 
         zsh-interactive-cd
         command-not-found
         chucknorris
         python
-        calc
         universalarchive
         yarn
         fzf-tab
         forgit
-        fzf-zsh-plugin)
+        fzf-zsh-plugin
+        calc)
 
 source $ZSH/oh-my-zsh.sh
 
