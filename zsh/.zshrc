@@ -174,8 +174,10 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=do
 # show systemd unit status
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
-# Images (broken)
+# Images 
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+zstyle ':fzf-tab:*' fzf-min-height 100
+
 
 # git
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
@@ -196,17 +198,8 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 	*) git log --color=always $word ;;
 	esac'
 
-# pyenv stuff
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # haskell stuff
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-
-# fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -228,3 +221,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Turso
 export PATH="$HOME/.turso:$PATH"
+
+# local bin
+export PATH="$HOME/.local/bin:$PATH"
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
