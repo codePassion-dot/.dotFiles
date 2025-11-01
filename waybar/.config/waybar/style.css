@@ -41,7 +41,7 @@ window#waybar {
 #wireplumber.muted,
 #wireplumber\#source,
 #workspaces button {
-  background: alpha(@crust, 0.82);
+  background: alpha(@crust, 1);
   border: 1px solid alpha(@mantle, 0.95);
   border-radius: 14px;
   padding: 6px 10px;
@@ -102,19 +102,7 @@ window#waybar {
   background: alpha(@crust, 0.95);
   border-color: alpha(@cyan, 0.25);
 }
-/* Volbar */
-/* Slider pill */
-#custom-volbar {
-  background: alpha(@crust, 0.82);
-  border: 1px solid alpha(@mantle, 0.95);
-  border-radius: 14px;
-  padding: 6px 10px;
-  margin: 0 4px;
-  box-shadow: 0 4px 14px alpha(@base, 0.65);
-  color: @text;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-}
+
 #custom-volbar.muted {
   opacity: 0.75;
 }

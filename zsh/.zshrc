@@ -142,17 +142,31 @@ fi
 
 #nnn
 # This second option relies on you're terminal using the catppuccin theme and well use true catppuccin colors:
-BLK="03" CHR="03" DIR="04" EXE="02" REG="07" HARDLINK="05" SYMLINK="05" MISSING="08" ORPHAN="01" FIFO="06" SOCK="03" UNKNOWN="01"
+BLK="03"      # block device → magenta (stands out but soft)
+CHR="03"      # char device → magenta
+DIR="04"      # directory → blue (Tokyo blue)
+EXE="02"      # executable → green (ok)
+REG="07"      # regular file → text (normal)
+HARDLINK="05" # hard link → cyan (light accent)
+SYMLINK="05"  # symlink → cyan
+MISSING="08"  # missing → gray/fallback (nnn ignores >07 but safe)
+ORPHAN="01"   # orphan → red (urgent)
+FIFO="06"     # fifo → sub (soft gray-blue)
+SOCK="03"     # socket → magenta
+UNKNOWN="01"  # unknown → red
 
-# Export Context Colors
-export NNN_COLORS="#04020301;4231"
 
 # Finally Export the set file colors ( Both options require this)
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui;o:fzopen;j:autojump;l:-!git log;f:finder'
-export NNN_FCOLORS="0203040a000d0608090b0501"
+export NNN_FCOLORS="030304020007050108090b0601"
 export NNN_ICONLOOKUP=1
+
+# exa, tree, ls palette 
+export LS_COLORS='di=34:fi=37:ln=36:or=31:mi=31:bd=35:cd=35:so=35:pi=90'
+export EXA_COLORS='di=34:fi=37:ln=36:or=31:mi=31:bd=35:cd=35:so=35:pi=90'
+
 
 #direnv staff (manage gh config dir environment variable)
 eval "$(direnv hook zsh)"
