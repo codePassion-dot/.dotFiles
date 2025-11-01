@@ -28,7 +28,12 @@ window#waybar {
 
 /* Generic pill */
 #clock,
+#mpris,
 #custom-volbar,
+#cpu,
+#memory,
+#network,
+#temperature,
 #custom-bluetooth,
 #window,
 #tray,
@@ -122,7 +127,9 @@ window#waybar {
   color: @sub;
   opacity: 0.75;
 }
-#wireplumber\#source:hover {
+#wireplumber\#source:hover,
+#custom-volbar:hover,
+#custom-bluetooth:hover {
   background: alpha(@crust, 0.95);
   border-color: alpha(@magenta, 0.25);
 }

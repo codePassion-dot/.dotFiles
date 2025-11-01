@@ -7,14 +7,18 @@
   "margin-right": 8,
   "spacing": 8,
 
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "mpris"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "custom/volbar",
     "wireplumber#source",
     "custom/bluetooth",
-    "tray",
+    "memory",
+    "cpu",
+    "temperature",
+    "network",
     "clock",
+    "tray",
   ],
 
   // ——— Workspaces (Hyprland) ———
@@ -28,6 +32,20 @@
       "default": "",
       "active": "",
       "urgent": "",
+    },
+  },
+
+  // ——— Music Player ———
+  "mpris": {
+    "format": "{player}: {player_icon}",
+    "format-paused": "{player}: {status_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["artist", "title"],
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵",
+    },
+    "status-icons": {
+      "paused": "⏸",
     },
   },
 
@@ -74,6 +92,39 @@
 
   // ——— System tray ———
   "tray": { "icon-size": 16, "spacing": 6 },
+
+  // ——— Memory and Swap Utilization ———
+  "memory": {
+    "interval": 30,
+    "format": "{used:0.1f}G/{total:0.1f}G ",
+  },
+  // ——— CPU Utilization ———
+  "cpu": {
+    "interval": 10,
+    "format": "{}% ",
+    "max-length": 10,
+  },
+
+  // ——— Temperature ———
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C ",
+  },
+
+  // ——— Ethernet ———
+  "network": {
+    "interface": "enp7s0",
+    "format": "{ifname}",
+    "format-ethernet": "🡅 {bandwidthUpBits} 🡇 {bandwidthDownBits}",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+  },
 
   // ——— Clock ———
   "clock": {
