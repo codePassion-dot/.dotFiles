@@ -112,6 +112,7 @@ check_update="true"
 
 settings_path="${HOME}/.config/imgur-screenshot/settings.conf"
 if [ -f "${settings_path}" ]; then
+  # shellcheck disable=SC1090
   source "${settings_path}"
 fi
 
@@ -137,12 +138,11 @@ if [ "${1}" = "--check" ]; then
   exit 0
 fi
 
-
 # notify <'ok'|'error'> <title> <text>
 function notify() {
   if is_mac; then
     if type growlnotify &>/dev/null; then
-      growlnotify  --icon "${imgur_icon_path}" --iconpath "${imgur_icon_path}" --title "${2}" --message "${3}"
+      growlnotify --icon "${imgur_icon_path}" --iconpath "${imgur_icon_path}" --title "${2}" --message "${3}"
     else
       terminal-notifier -appIcon "${imgur_icon_path}" -contentImage "${imgur_icon_path}" -title "imgur: ${2}" -message "${3}"
     fi
@@ -162,7 +162,7 @@ function take_screenshot() {
   cmd="screenshot_${mode}_command"
   cmd=${!cmd//\%img/${1}}
 
-  if ! shot_err="$(${cmd} &>/dev/null)"; then  #takes a screenshot with selection
+  if ! shot_err="$(${cmd} &>/dev/null)"; then #takes a screenshot with selection
     echo "Failed to take screenshot '${1}': '${shot_err}'. For more information visit https://github.com/jomo/imgur-screenshot/wiki/Troubleshooting" | tee -a "${log_file}"
     notify error "Something went wrong :(" "Information has been logged"
     exit 1
@@ -204,10 +204,11 @@ function load_access_token() {
   token_expire_time=0
   # check for saved access_token and its expiration date
   if [ -f "${credentials_file}" ]; then
+    # shellcheck disable=SC1090
     source "${credentials_file}"
   fi
   current_time="$(date +%s)"
-  preemptive_refresh_time="$((10*60))"
+  preemptive_refresh_time="$((10 * 60))"
   expired="$((current_time > (token_expire_time - preemptive_refresh_time)))"
   if [ -n "${refresh_token}" ]; then
     # token already set
@@ -248,13 +249,14 @@ function refresh_access_token() {
   check_oauth2_client_secrets
   token_url="https://api.imgur.com/oauth2/token"
   # exchange the refresh token for access_token and refresh_token
-  if ! response="$(curl --compressed -fsSL --stderr - \
-                    -F "client_id=${imgur_acct_key}" \
-                    -F "client_secret=${imgur_secret}" \
-                    -F "grant_type=refresh_token" \
-                    -F "refresh_token=${refresh_token}" \
-                    "${token_url}"
-                    )"; then
+  if ! response="$(
+    curl --compressed -fsSL --stderr - \
+      -F "client_id=${imgur_acct_key}" \
+      -F "client_secret=${imgur_secret}" \
+      -F "grant_type=refresh_token" \
+      -F "refresh_token=${refresh_token}" \
+      "${token_url}"
+  )"; then
     # curl failed
     handle_upload_error "${response}" "${token_url}"
     exit 1
@@ -273,12 +275,12 @@ function save_access_token() {
   access_token="$(grep -Eo 'access_token":".*"' <<<"${1}" | cut -d '"' -f 3)"
   refresh_token="$(grep -Eo 'refresh_token":".*"' <<<"${1}" | cut -d '"' -f 3)"
   expires_in="$(grep -Eo 'expires_in":[0-9]*' <<<"${1}" | cut -d ':' -f 2)"
-  token_expire_time="$(( $(date +%s) + expires_in ))"
+  token_expire_time="$(($(date +%s) + expires_in))"
 
   # create dir if not exist
   mkdir -p "$(dirname "${2}")" 2>/dev/null
   touch "${2}" && chmod 600 "${2}"
-  cat <<EOF > "${2}"
+  cat <<EOF >"${2}"
 access_token="${access_token}"
 refresh_token="${refresh_token}"
 token_expire_time="${token_expire_time}"
@@ -297,11 +299,11 @@ function fetch_account_info() {
 }
 
 function delete_image() {
-  response="$(curl --compressed -X DELETE  -fsSL --stderr - -H "Authorization: Client-ID ${1}" "https://api.imgur.com/3/image/${2}")"
+  response="$(curl --compressed -X DELETE -fsSL --stderr - -H "Authorization: Client-ID ${1}" "https://api.imgur.com/3/image/${2}")"
   if grep -Eq '"success":\s*true' <<<"${response}"; then
-    echo "Image successfully deleted (delete hash: ${2})." >> "${3}"
+    echo "Image successfully deleted (delete hash: ${2})." >>"${3}"
   else
-    echo "The Image could not be deleted: ${response}." >> "${3}"
+    echo "The Image could not be deleted: ${response}." >>"${3}"
   fi
 }
 
@@ -377,22 +379,22 @@ function handle_upload_success() {
   fi
 
   # print to log file: image link, image location, delete link
-  echo -e "${1}\t${3}\t${2}" >> "${log_file}"
+  echo -e "${1}\t${3}\t${2}" >>"${log_file}"
 
   notify ok "Upload done!" "${1}"
 
-#  if [ ! -z "${open_command}" ] && [ "${open}" = "true" ]; then
-#    open_cmd=${open_command//\%url/${1}}
-#    open_cmd=${open_cmd//\%img/${2}}
-#    echo "Opening '${open_cmd}'"
-#    eval "${open_cmd}"
-#  fi
+  #  if [ ! -z "${open_command}" ] && [ "${open}" = "true" ]; then
+  #    open_cmd=${open_command//\%url/${1}}
+  #    open_cmd=${open_cmd//\%img/${2}}
+  #    echo "Opening '${open_cmd}'"
+  #    eval "${open_cmd}"
+  #  fi
 }
 
 function handle_upload_error() {
   error="Upload failed: \"${1}\""
   echo "${error}"
-  echo -e "Error\t${2}\t${error}" >> "${log_file}"
+  echo -e "Error\t${2}\t${error}" >>"${log_file}"
   notify error "Upload failed :(" "${1}"
 }
 
@@ -414,12 +416,12 @@ function handle_album_creation_success() {
   fi
 
   # print to log file: album link, album title, delete hash
-  echo -e "${1}\t\"${3}\"\t${2}" >> "${log_file}"
+  echo -e "${1}\t\"${3}\"\t${2}" >>"${log_file}"
 }
 
 function handle_album_creation_error() {
   error="Album creation failed: \"${1}\""
-  echo -e "Error\t${2}\t${error}" >> "${log_file}"
+  echo -e "Error\t${2}\t${error}" >>"${log_file}"
   notify error "Album creation failed :(" "${1}"
   if [ ${exit_on_album_creation_fail} ]; then
     exit 1
@@ -447,55 +449,71 @@ while [ ${#} != 0 ]; do
     echo "  -d, --auto-delete <s>        Automatically delete image after <s> seconds"
     echo "  -u, --update                 Check for updates, exit"
     echo "  file                         Upload file instead of taking a screenshot"
-    exit 0;;
+    exit 0
+    ;;
   -v | --version)
     echo "${current_version}"
-    exit 0;;
+    exit 0
+    ;;
   -s | --select)
     mode="select"
-    shift;;
+    shift
+    ;;
   -w | --window)
     mode="window"
-    shift;;
+    shift
+    ;;
   -f | --full)
     mode="full"
-    shift;;
+    shift
+    ;;
   -o | --open)
     # shellcheck disable=SC2034
     open="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -e | --edit)
     edit="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -i | --edit-command)
     edit_command="${2}"
     edit="true"
-    shift 2;;
+    shift 2
+    ;;
   -l | --login)
     login="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -c | --connect)
     load_access_token
     fetch_account_info
-    exit 0;;
+    exit 0
+    ;;
   -a | --album)
     album_title="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -A | --album-id)
     album_id="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -k | --keep-file)
     keep_file="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -d | --auto-delete)
     auto_delete="${2}"
-    shift 2;;
+    shift 2
+    ;;
   -u | --update)
     check_for_update
-    exit 0;;
+    exit 0
+    ;;
   *)
     upload_files=("${@}")
-    break;;
+    break
+    ;;
   esac
 done
 
@@ -503,7 +521,6 @@ if [ "${login}" = "true" ]; then
   # load before changing directory
   load_access_token
 fi
-
 
 if [ -n "${album_title}" ]; then
   if [ "${login}" = "true" ]; then
@@ -581,12 +598,11 @@ for upload_file in "${upload_files[@]}"; do
   # delete file if configured
   if [ "${keep_file}" = "false" ] && [ -z "${1}" ]; then
     echo "Deleting temp file ${file_dir}/${img_file}"
-    rm -rf "${img_file}"
+    rm -rf -- "${img_file}"
   fi
 
   echo ""
 done
-
 
 if [ "${check_update}" = "true" ]; then
   check_for_update
