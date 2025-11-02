@@ -13,6 +13,10 @@ dceb()
 {
     docker-compose exec "$1" bash
 }
+cnvpn()
+{
+    nohup sudo openvpn --config /etc/openvpn/ovpn_udp/"$1".nordvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/creds > /dev/null 2>&1 &
+}
 da()
 {
     docker attach "$1"
@@ -72,10 +76,6 @@ gdcid()
 gdcip()
 {
     docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(gdcid "$1")
-}
-cnvpn()
-{
-   nordvpn connect "$1"
 }
 gpl()
 {
