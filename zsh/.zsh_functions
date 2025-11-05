@@ -13,9 +13,250 @@ dceb()
 {
     docker-compose exec "$1" bash
 }
-cnvpn()
-{
-    nohup sudo openvpn --config /etc/openvpn/ovpn_udp/"$1".nordvpn.com.udp.ovpn --auth-user-pass /etc/openvpn/creds > /dev/null 2>&1 &
+# Show VPN exit: Country, City, Public IP
+# Usage:
+#   stnvpn 
+#   stnvpn --json
+stnvpn() {
+  local procs
+  procs="$(pgrep -a -f 'openvpn.*nordvpn\.com' || true)"
+
+  if [[ -z "$procs" ]]; then
+    echo "No active NordVPN OpenVPN process found."
+    return 1
+  fi
+  local json=no
+  [[ "$1" == "--json" ]] && json=yes
+
+  # Try a few geo-IP providers
+  local data src
+  if data="$(curl -fs --max-time 4 https://ipinfo.io/json)"; then
+    src=ipinfo
+    # ipinfo: { ip, country(ISO2), city }
+    :
+  elif data="$(curl -fs --max-time 4 https://ipapi.co/json)"; then
+    src=ipapi
+    # ipapi: { ip, country_code(ISO2), city }
+  elif data="$(curl -fs --max-time 4 https://ifconfig.co/json)"; then
+    src=ifconfig
+    # ifconfig: { ip, country_iso(ISO2), city }
+  else
+    echo "nvpn_status: failed to query IP info" >&2
+    return 1
+  fi
+
+  # Normalize fields with jq
+  local ip country city
+  case "$src" in
+    ipinfo)
+      ip="$(jq -r '.ip // empty' <<<"$data")"
+      country="$(jq -r '.country // empty' <<<"$data")"
+      city="$(jq -r '.city // empty' <<<"$data")"
+      ;;
+    ipapi)
+      ip="$(jq -r '.ip // empty' <<<"$data")"
+      country="$(jq -r '.country_code // empty' <<<"$data")"
+      city="$(jq -r '.city // empty' <<<"$data")"
+      ;;
+    ifconfig)
+      ip="$(jq -r '.ip // empty' <<<"$data")"
+      country="$(jq -r '.country_iso // empty' <<<"$data")"
+      city="$(jq -r '.city // empty' <<<"$data")"
+      ;;
+  esac
+
+  if [[ "$json" == "yes" ]]; then
+    jq -n --arg ip "$ip" --arg country "$country" --arg city "$city" \
+      '{ip:$ip, country:$country, city:$city}'
+  else
+    echo "IP: ${ip:-unknown}"
+    echo "Country: ${country:-unknown}"
+    echo "City: ${city:-unknown}"
+  fi
+}
+
+# deps: jq curl
+# Usage:
+#   pnvpn us
+#   pnvpn "United Kingdom" tcp
+# Prints a hostname like: us9156.nordvpn.com
+pnvpn() {
+  local country_input="$1"
+  local proto="${2:-udp}"                # udp|tcp
+  local tech="openvpn_${proto}"          # openvpn_udp|openvpn_tcp
+  [[ -z "$country_input" ]] && { echo "usage: pnvpn <country|ISO2|id> [udp|tcp]" >&2; return 1; }
+
+  # 1) Resolve country_id (accept numeric id, ISO2 code, or full name)
+  local country_id
+  if [[ "$country_input" =~ ^[0-9]+$ ]]; then
+    country_id="$country_input"
+  else
+    local countries
+    countries="$(curl -fsSL "https://api.nordvpn.com/v1/servers/countries")" || { echo "error: failed to fetch countries" >&2; return 2; }
+
+    # try exact ISO2, then exact name, then prefix/substring matches
+    country_id="$(
+      jq -r --arg q "$country_input" '
+        def ci(s): (s//"")|ascii_downcase;
+        # exact ISO2
+        ( map(select(ci(.code) == ci($q))) | .[0].id ) //
+        # exact name
+        ( map(select(ci(.name) == ci($q))) | .[0].id ) //
+        # begins-with name
+        ( map(select(startswith($q) or (ci(.name)|startswith(ci($q))))) | .[0].id ) //
+        empty
+      ' <<<"$countries"
+    )"
+  fi
+
+  [[ -z "$country_id" ]] && { echo "error: country not found: $country_input" >&2; return 3; }
+
+  # 2) Try recommendations with tech filter (URL-encoded brackets)
+  local url_base="https://api.nordvpn.com/v1/servers"
+  local rec_with_tech="${url_base}/recommendations?limit=5&filters%5Bcountry_id%5D=${country_id}&filters%5Bservers_technologies%5D%5Bidentifier%5D=${tech}"
+  local host
+  host="$(curl -fsSL "$rec_with_tech" | jq -r '.[0].hostname // empty')"
+
+  # 3) Fallback: recommendations without tech filter
+  if [[ -z "$host" ]]; then
+    local rec_no_tech="${url_base}/recommendations?limit=5&filters%5Bcountry_id%5D=${country_id}"
+    host="$(curl -fsSL "$rec_no_tech" | jq -r '.[0].hostname // empty')"
+  fi
+
+  # 4) Fallback: fetch full server list, pick lowest-load ONLINE that supports requested tech
+  if [[ -z "$host" ]]; then
+    local servers_url="${url_base}?filters%5Bcountry_id%5D=${country_id}"
+    host="$(
+      curl -fsSL "$servers_url" \
+      | jq -r --arg tech "$tech" '
+          # keep servers that are online and have the requested tech
+          [ .[] 
+            | select(.status == "online")
+            | select(any(.technologies[]?; .identifier == $tech))
+          ]
+          | sort_by(.load // 100)
+          | .[0].hostname // empty
+        '
+    )"
+  fi
+
+  [[ -z "$host" ]] && { echo "error: no server found for country_id=$country_id (tried tech=${tech})" >&2; return 4; }
+
+  printf "%s\n" "$host"
+}
+# Connect to a recommended NordVPN server via OpenVPN
+# Usage:
+#   cnvpn us              # UDP by default
+#   cnvpn "United Kingdom" tcp
+# Env (optional):
+#   NORDVPN_CREDS=/etc/openvpn/creds
+#   NORDVPN_LOG=/var/log/nordvpn   # directory for logs (optional)
+cnvpn() {
+  local country="$1"
+  local proto="${2:-udp}"                        # udp|tcp
+  local credfile="${NORDVPN_CREDS:-/etc/openvpn/creds}"
+
+  [[ -z "$country" ]] && { echo "usage: cnvpn <country|ISO2|id> [udp|tcp]" >&2; return 1; }
+
+  # If a VPN is already running, stop it first
+  snvpn
+  sleep 2
+
+  # pick best host
+  local host
+  host="$(pnvpn "$country" "$proto")" || return $?
+
+  # ensure config exists (download if missing)
+  local base="/etc/openvpn/ovpn_${proto}"
+  local cfg="${base}/${host}.${proto}.ovpn"
+  if [[ ! -f "$cfg" ]]; then
+    sudo mkdir -p "$base"
+    local url="https://downloads.nordcdn.com/configs/files/ovpn_${proto}/servers/${host}.${proto}.ovpn"
+    echo "Fetching config: $url"
+    sudo curl -fsSL "$url" -o "$cfg" || { echo "download failed"; return 2; }
+  fi
+
+  # logging / pid file (optional)
+  local pidfile="/run/openvpn-${host}.pid"
+  local redir="/dev/null"
+  if [[ -n "$NORDVPN_LOG" ]]; then
+    mkdir -p "$NORDVPN_LOG" 2>/dev/null || true
+    redir="${NORDVPN_LOG%/}/openvpn-${host}.log"
+    echo "Log: $redir"
+  fi
+
+  echo "Connecting to ${host} (${proto})…"
+  # run in background, write PID for easy stop later
+  nohup sudo openvpn \
+    --config "$cfg" \
+    --auth-user-pass "$credfile" \
+    --writepid "$pidfile" \
+    > "$redir" 2>&1 &
+
+  echo "Started. PID file: $pidfile"
+  echo "To stop: sudo kill \$(cat $pidfile)  # or: sudo pkill -f \"$cfg\""
+}
+# Stop NordVPN OpenVPN sessions started by our script
+# Usage:
+#   snvpn            # interactively choose to kill
+#   snvpn -y         # kill without prompting
+#   snvpn us9156     # target by hostname fragment (uses PID file match)
+#   snvpn -y us9156  # no prompt + target fragment
+snvpn() {
+  local auto=no
+  local target=""
+  # parse flags
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -y|--yes) auto=yes ;;
+      -h|--help) echo "usage: snvpn [-y] [hostname-fragment]"; return 0 ;;
+      *) target="$1" ;;
+    esac
+    shift
+  done
+
+  local pidfiles=()
+  # Prefer PID files our cnvpn wrote
+  # shellcheck disable=SC2207
+  pidfiles=($(sudo find /run -maxdepth 1 -type f -name "openvpn-${target}*.pid" -print 2>/dev/null))
+
+  if (( ${#pidfiles[@]} > 0 )); then
+    for pf in "${pidfiles[@]}"; do
+      local pid
+      pid="$(sudo cat "$pf" 2>/dev/null || true)"
+      if [[ -n "$pid" && -e "/proc/$pid" ]]; then
+        echo "Stopping OpenVPN (PID $pid, file $pf)…"
+        sudo kill "$pid" && sudo rm -f "$pf"
+      else
+        [[ -n "$pid" ]] && echo "Stale PID file $pf (PID $pid not running) — removing."
+        sudo rm -f "$pf"
+      fi
+    done
+    return 0
+  fi
+
+  # Fallback: scan running processes for nord configs
+  # -f: match full cmdline; we match 'nordvpn.com' to avoid non-Nord openvpn sessions
+  local procs
+  procs="$(pgrep -a -f 'openvpn.*nordvpn\.com' || true)"
+
+  if [[ -z "$procs" ]]; then
+    echo "No active NordVPN OpenVPN process found."
+    return 1
+  fi
+
+  printf "%s\n\n" "$procs"
+  if [[ "$auto" != yes ]]; then
+    # portable prompt for zsh/bash
+    printf "Kill these processes? [y/N] "
+    read -r ans
+    case "$ans" in
+      [Yy]*) ;;
+      *) echo "Aborted."; return 0 ;;
+    esac
+  fi
+
+  echo "$procs" | awk '{print $1}' | xargs -r sudo kill
 }
 da()
 {
