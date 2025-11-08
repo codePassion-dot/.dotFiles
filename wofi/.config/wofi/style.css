@@ -1,0 +1,103 @@
+/* ——— Palette: Tokyo Night — Storm ——— */
+@define-color base    #1f2335; /* deep background */
+@define-color crust   #24283b; /* surfaces */
+@define-color mantle  #1a1e2e; /* borders/shadows */
+@define-color text    #c0caf5; /* primary text */
+@define-color sub     #a9b1d6; /* secondary text */
+@define-color blue    #7aa2f7; /* accent */
+@define-color cyan    #7dcfff; /* hover accent */
+@define-color magenta #bb9af7; /* alt accent */
+@define-color red     #f7768e; /* urgent */
+@define-color green   #9ece6a; /* ok */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Inter", ui-sans-serif, system-ui;
+  font-size: 12px;
+}
+
+/* Window */
+window {
+  background: alpha(@base, 0.92);
+  color: @text;
+  border: 1px solid alpha(@mantle, 0.95);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+/* Layout boxes */
+#outer-box {
+  margin: 6px;
+}
+#input {
+  color: @text;
+  background: @crust;
+  border: 1px solid alpha(@mantle, 0.9);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+}
+#input:focus {
+  border-color: alpha(@blue, 0.45);
+}
+
+#scroll {
+  background: transparent;
+  border: none;
+}
+#inner-box {
+  background: transparent;
+}
+
+/* Entries (apps / lines) */
+#entry {
+  background: alpha(@crust, 1);
+  color: @sub;
+  border: 1px solid alpha(@mantle, 0.9);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin: 4px 0;
+}
+#entry:hover {
+  color: @text;
+  border-color: alpha(@cyan, 0.3);
+  background: alpha(@crust, 0.96);
+}
+#entry:selected {
+  background: @blue;
+  color: #1b1e2b; /* readable on blue */
+  border-color: alpha(@blue, 0.6);
+}
+
+/* Icons + text inside entries */
+#img {
+  margin-right: 8px;
+  min-width: 18px;
+  min-height: 18px;
+}
+#text {
+  color: inherit;
+}
+
+/* Prompt and placeholders */
+#prompt {
+  color: @sub;
+  margin-right: 8px;
+}
+#input::placeholder {
+  color: alpha(@sub, 0.75);
+}
+
+/* Shortcuts (if enabled) */
+#shortcut {
+  color: alpha(@sub, 0.8);
+}
+
+/* Scrollbar (GTK) */
+scrollbar,
+scrollbar slider {
+  background: transparent;
+}
+scrollbar slider {
+  background: alpha(@mantle, 0.9);
+  border-radius: 8px;
+}

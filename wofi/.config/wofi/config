@@ -1,0 +1,23 @@
+# Centered launcher w/ icons, fuzzy, drun
+mode=drun
+show=drun
+allow_images=true
+image_size=22
+term=kitty
+prompt=
+normal_window=true
+
+# size/placement (tweak for vertical monitor if needed)
+width=38%
+height=50%
+location=center
+anchor=center
+
+# behavior
+filter_rate=100
+insensitive=true
+no_actions=false
+matching=fuzzy
+sort_order=default
+gtk_dark=true
+
