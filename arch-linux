@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="ssh,lazygit,lessfilter,tmux,gh-envs,gitconfig,nvim,kitty,zsh,nnn,dunst"
+    STOW_FOLDERS="ssh,hyprland,lazygit,wofi,waybar,lessfilter,tmux,gh-envs,gitconfig,nvim,kitty,zsh,nnn,dunst"
 fi
 
-if [[ -z $DOTFILES ]]; then
+if [[ -z $DOTFILES ]] then
     DOTFILES=$HOME/.dotfiles
 fi
 
