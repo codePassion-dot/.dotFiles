@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Check if wofi is already running
+if pgrep -x wofi >/dev/null; then
+  # Kill it (this closes the menu)
+  pkill -x wofi
+else
+  # Launch wofi
+  wofi --show drun &
+fi
